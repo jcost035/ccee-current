@@ -1,0 +1,360 @@
+<head>
+    {% load static %}
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9H967QXNHX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9H967QXNHX');
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="{% static 'site.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+
+
+
+
+</head>
+
+<body>
+    {% include 'polls/nav.html'%}
+    
+    <div class="relative w-9/12 m-md:w-11/12 mx-auto z-10" x-data="programData()" x-init="observe()">
+        <div class="bg-cblue rounded-b-lg" style="min-height:100%;
+            background:linear-gradient(0deg, rgba(224, 224, 224, 0.5), rgba(0, 113, 188, 0.9)), url({{dose.banner_photo.url}});
+            background-size:cover;">
+            <div class="pt-32 cursor-pointer" onclick="location.href='/daily-dose';">
+                <span class=" text-white font-roboto text-2xl"><i class="fas fa-arrow-left px-2"></i>Back to DDOE Topic Page</span>
+            </div>
+            <div class="flex flex-col pb-12">
+                <div onclick="location.href='/daily-dose';" class="cursor-pointer h-82 self-center">
+                    <img class="object-contain h-72" src="{% static 'daily-white.png' %}">
+                </div>
+                <h1 class="text-7xl text-white font-bebas self-center">{{dose.topic}}</h1>
+                <h1 class="text-4xl text-white font-bebas self-center">{{dose.date}}</h1>
+            </div>
+        </div>
+
+        <div class="sticky top-32  w-44  bg-gray-300  z-50 rounded-lg m-md:hidden " style="visibility: hidden;">
+            <button class="hover:bg-gray-400 w-full p-4 font-roboto text-cblue text-lg rounded-t-lg" @click="scrollTo('about')" x-bind:class="{'border-r-4 border-cgreen' : highlighted['about-marker']}">Key Question</button>
+            <button class="hover:bg-gray-400 w-full p-4 pb-2 font-roboto text-cblue text-lg" @click="scrollTo('video')" x-bind:class="{'border-r-4 border-cgreen' : highlighted['daily-content-marker']}">Resources</button>
+            <button class="hover:bg-gray-400 w-full p-4 pl-16 py-1 font-roboto text-cblue text-lg italic text-left" @click="scrollTo('video')" >Video</button>
+            <button class="hover:bg-gray-400 w-full p-4 pl-16 py-1 font-roboto text-cblue text-lg italic text-left" @click="scrollTo('daily-content')" >Articles</button>
+            <button class="hover:bg-gray-400 w-full p-4 pl-16 py-1 font-roboto text-cblue text-lg italic text-left" @click="scrollTo('video')" >Interactives</button>
+            <button class="hover:bg-gray-400 w-full p-4 pl-16 py-1 font-roboto text-cblue text-lg italic text-left" @click="scrollTo('video')" >Other</button>
+            <button class="hover:bg-gray-400 w-full p-4 font-roboto text-cblue text-lg" @click="scrollTo('faq')" x-bind:class="{'border-r-4 border-cgreen' : highlighted['faq-marker']}">About DDOE</button>
+            <button class="hover:bg-gray-400 w-full p-4 pb-6 font-roboto text-cblue text-lg rounded-b-lg" @click="scrollTo('supporters')" x-bind:class="{'border-r-4 border-cgreen' : highlighted['supporters-marker']}">More DDOE Topics</button>
+        </div>
+
+
+        <div class="flex  flex-col m-md:space-y-4 md:flex-row   md:-mt-80 mt-14 md:items-end  observerTrigger" id="about">
+            <div class="flex flex-col md:w-full h-full">
+                <img src="{{program.logo_path}}" class=" object-cover object-center rounded " alt="" />
+                <div class=" rounded text-center px-6 pb-6 pt-4 mt-2">
+                    <h1 class="text-5xl md:text-6xl font-bebas text-cgreen">{{dose.key_question}}</h1>
+                    <p class="font-roboto font-thin"></p>
+                </div>
+            </div>
+
+        </div>
+
+        
+        <div id="video" class="observerTrigger"></div>
+        <div class="flex flex-col md:flex-row mt-10  m-md:space-y-6 md:space-x-4">
+            <div id='a' class="md:w-1/2 rounded my-auto">
+                <video width="640" height="240" class="rounded-lg" controls>
+                    <source src="{{program.video_path}}" type="video/mp4">
+                  Your browser
+            </div>
+            <div id='b' class="md:w-1/2 rounded my-auto">
+                <img src="https://ccee.org/wp-content/uploads/2019/07/CCEE-Logo-Final-5-2019-e1563236007990.png" class=" object-cover object-center rounded " alt="" />
+            </div>
+            <div id='c' class="md:w-1/2 rounded my-auto">
+                <video width="640" height="240" class="rounded-lg" controls>
+                    <source src="{{program.video_path}}" type="video/mp4">
+                  Your browser
+            </div>
+            <div id='d' class="md:w-1/2 rounded my-auto">
+                <img src="https://ccee.org/wp-content/uploads/2019/07/CCEE-Logo-Final-5-2019-e1563236007990.png" class=" object-cover object-center rounded " alt="" />
+            </div>
+        </div>
+
+        <div id="daily-content" class="observerTrigger"></div>
+        <div class="hidden md:w-170 bg-cblue h-96 m-md:h-256 -ml-72 -mr-64 -z-1 mt-10"></div>
+        <div class="bg-cblue rounded-lg p-10">
+            <h1 class="text-6xl text-white font-bebas text-center">Resources</h1>
+            <p class="font-roboto font-thin text-white w-2/3 mx-auto text-xl text-center">
+                Our Daily Dose of Econ resources are meant to help you bring economics and financial literacy alive to your students! Use the following resources alongside your classroom instruction or even as a daily warm-up. 
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 w-full mt-8 items-center mt-10 justify-center">
+                <!--first card-->
+                <div id='first' class="flex flex-col items-center md:w-10/12 cursor-pointer " onclick="window.location.href='{{dose.first_resource_url}}'">
+                    <div class="bg-transparent overflow-hidden  w-full relative h-40 pb-36">
+                        <img src="{{dose.first_resource_image.url}}" class="absolute h-full w-full object-cover object-center rounded-t-lg bg-cblue" alt="" />
+                    </div>
+                    <div class="z-10  w-full">
+                        <div class="bg-white rounded-b-lg   py-2 px-5">
+                            <div class="text-white font-roboto text-xl p-2 rounded-sm -mt-10 md:-ml-10 -ml-8 bg-cgreen "><span>{{dose.first_resource_title}}</span></div>
+                            <div class="flex items-center justify-between mt-2">
+                                <div class=" text-gray-400 font-bold">{{dose.first_resource_description}}</div>
+                                <div class="text-2xl text-red-600 font-bold"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--second card-->
+                <div id='second' class="flex flex-col items-center md:w-10/12 cursor-pointer " onclick="window.location.href='{{dose.second_resource_url}}'">
+                    <div class="bg-transparent overflow-hidden  w-full relative h-40 pb-36">
+                        <img src="{{dose.second_resource_image.url}}" class="absolute h-full w-full object-cover object-center rounded-t-lg bg-cblue" alt="" />
+                    </div>
+                    <div class="z-10  w-full">
+                        <div class="bg-white rounded-b-lg   py-2 px-5">
+                            <div class="text-white font-roboto text-xl p-2 rounded-sm -mt-10 md:-ml-10 -ml-8 bg-cgreen"><span>{{dose.second_resource_title}}</span></div>
+                            <div class="flex items-center justify-between mt-2">
+                                <div class=" text-gray-400 font-bold">{{dose.second_resource_description}}</div>
+                                <div class="text-2xl text-red-600 font-bold"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--third card-->
+                <div id='third' class="flex flex-col items-center md:w-10/12 cursor-pointer " onclick="window.location.href='{{dose.third_resource_url}}'">
+                    <div class="bg-transparent overflow-hidden  w-full relative h-40 pb-36">
+                        <img src="{{dose.third_resource_image.url}}" class="absolute h-full w-full object-cover object-center rounded-t-lg bg-cblue" alt="" />
+                    </div>
+                    <div class="z-10  w-full">
+                        <div class="bg-white rounded-b-lg   py-2 px-5">
+                            <div class="text-white font-roboto text-xl p-2 rounded-sm -mt-10 md:-ml-10 -ml-8 bg-cgreen"><span>{{dose.third_resource_title}}</span></div>
+                            <div class="flex items-center justify-between mt-2">
+                                <div class=" text-gray-400 font-bold">{{dose.third_resource_description}}</div>
+                                <div class="text-2xl text-red-600 font-bold"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--fourth card-->
+                <div id='fourth' class="flex flex-col items-center md:w-10/12 cursor-pointer " onclick="window.location.href='{{dose.fourth_resource_url}}'">
+                    <div class="bg-transparent overflow-hidden  w-full relative h-40 pb-36">
+                        <img src="{{dose.fourth_resource_image.url}}" class="absolute h-full w-full object-cover object-center rounded-t-lg bg-cblue" alt="" />
+                    </div>
+                    <div class="z-10 w-full">
+                        <div class="bg-white rounded-b-lg py-5 px-5">
+                            <span class="text-white font-roboto absolute text-xl p-2 rounded-sm -mt-10 md:-ml-10 -ml-8 bg-cgreen">{{dose.fourth_resource_title}}</span>
+                            <div class="flex items-center justify-between mt-8">
+                                <div class=" text-gray-400 font-bold">{{dose.fourth_resource_description}}</div>
+                                <div class="text-2xl text-red-600 font-bold"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--fifth card-->
+                <div id='fifth' class="flex flex-col items-center md:w-10/12 cursor-pointer " onclick="window.location.href='{{dose.fifth_resource_url}}'">
+                    <div class="bg-transparent overflow-hidden  w-full relative h-40 pb-36">
+                        <img src="{{dose.fifth_resource_image.url}}" class="absolute h-full w-full object-cover object-center rounded-t-lg bg-cblue" alt="" />
+                    </div>
+                    <div class="z-10  w-full">
+                        <div class="bg-white rounded-b-lg   py-5 px-5">
+                            <span class="text-white font-roboto absolute text-xl p-2 rounded-sm -mt-10 md:-ml-10 -ml-8 bg-cgreen">{{dose.fifth_resource_title}}</span>
+                            <div class="flex items-center justify-between mt-8">
+                                <div class=" text-gray-400 font-bold">{{dose.fifth_resource_description}}</div>
+                                <div class="text-2xl text-red-600 font-bold"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--sixth card-->
+                <div id='sixth' class="flex flex-col items-center md:w-10/12 cursor-pointer " onclick="window.location.href='{{dose.sixth_resource_url}}'">
+                    <div class="bg-transparent overflow-hidden  w-full relative h-40 pb-36">
+                        <img src="{{dose.sixth_resource_image.url}}" class="absolute h-full w-full object-cover object-center rounded-t-lg bg-cblue" alt="" />
+                    </div>
+                    <div class="z-10  w-full">
+                        <div class="bg-white rounded-b-lg   py-5 px-5">
+                            <span class="text-white font-roboto absolute text-xl p-2 rounded-sm -mt-10 md:-ml-10 -ml-8 bg-cgreen">{{dose.sixth_resource_title}}</span>
+                            <div class="flex items-center justify-between mt-8">
+                                <div class=" text-gray-400 font-bold">{{dose.sixth_resource_description}}</div>
+                                <div class="text-2xl text-red-600 font-bold"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id='faq' class="observerTrigger"></div>
+        <div class=" mt-12 content-center" >
+            <h1 class="text-6xl font-bebas text-center pb-4">About Daily Dose of Econ</h1>
+            <p class="font-roboto font-thin w-2/3 mx-auto text-xl text-center">
+                From Monday through Friday, the CCEE team curates a set of topics alongside ready-to-use resources to help you teach your class about economics and personal finance. We’ve made it easy for you to simply click and teach! 
+            </p>
+        </div>
+
+        <div class=" text-right bg-white border-8 border-cblue rounded-lg mt-16 p-6">
+            <div >
+                <h1 class="text-6xl font-bebas  text-center py-6">More DDOE Topics</h1>
+                <div class="flex flex-col md:flex-row z-10 relative mx-8 md:space-x-6">
+
+                    <div @click="window.location.href='{{first_dose.topic}}'" class="cursor-pointer w-full lg:w-1/3 p-4 lg:p-0 ">
+                        <img  src="{{first_dose.banner_photo.url}}" class="w-full object-cover rounded relative rounded -z-1 h-64" alt="technology" />
+                        <div  class="relative p-4 pl-0 z-20">
+                            
+                            <h2 class="-ml-4 -mr-4 md:-ml-6  z-20 text-2xl text-gray-800  p-2  -mt-24 font-bebas overflow-hidden overflow-clip">
+                                <span class="leading-loose text-white bg-cgreen p-2 px-4">
+                                    {{first_dose.topic}}
+                                <span>
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div @click="window.location.href='{{second_dose.topic}}'" class="cursor-pointer w-full lg:w-1/3 p-4 lg:p-0 ">
+                        <div class="rounded ">
+                            <img  src="{{second_dose.banner_photo.url}}" class="w-full object-cover rounded relative rounded -z-1 h-64" alt="technology" />
+                        </div>
+                        <div  class="relative p-4 pl-0 z-20">
+                            
+                            <h2 class="-ml-4 -mr-4 md:-ml-6  z-20 text-2xl text-gray-800  p-2  -mt-24 font-bebas overflow-hidden overflow-clip">
+                                <span class="leading-loose text-white bg-cgreen p-2 px-4">
+                                    {{second_dose.topic}}
+                                <span>
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div @click="window.location.href='{{third_dose.topic}}'" class="cursor-pointer w-full lg:w-1/3 p-4 lg:p-0 ">
+                        <img  src="{{third_dose.banner_photo.url}}" class="w-full object-cover rounded relative rounded -z-1 h-64" alt="technology" />
+                        <div  class="relative p-4 pl-0 z-20">
+                            
+                            <h2 class="-ml-4 -mr-4 md:-ml-6  z-20 text-2xl text-gray-800  p-2  -mt-24 font-bebas overflow-hidden overflow-clip">
+                                <span class="leading-loose text-white bg-cgreen p-2 px-4">
+                                    {{third_dose.topic}}
+                                <span>
+                            </h2>
+                        </div>
+                    </div>
+                    
+
+
+                
+
+                </div>
+
+                <a href="/daily-dose" class="p-4 m-24 bg-cblue hover:bg-cblue-dark text-white font-roboto text-xl rounded">See All DDOE Topics</a>
+
+                <div id="supporters" class=" observerTrigger"></div>
+            </div>
+        </div>
+
+
+
+        <!-- Begin Constant Contact Inline Form Code -->
+      <div class="mt-24  mx-auto bg-cblue rounded-lg flex flex-col m-md:py-12  md:flex-row ">
+        <div class="self-center px-16">
+          <i class="fas fa-envelope-open-text fa-7x text-cgreen"></i>
+        </div>
+        <div class="">
+          <h3 class="font-bebas text-5xl text-white m-md:text-center pt-6 md:-mb-4">Stay up to date on all things CCEE</h3>
+          <div class="ctct-inline-form md:w-2/3 self-center " data-form-id="018d6a3e-dfdc-4bee-aa5c-6f05cca61020"></div>
+        </div>
+      </div>
+      <!-- End Constant Contact Inline Form Code -->
+
+    </div>
+    {% include "polls/footer.html"%}
+</body>
+
+<!-- Begin Constant Contact Active Forms -->
+<script> var _ctct_m = "7c85ca4a273adbb5078e387bee3b7a09"; </script>
+<script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
+<!-- End Constant Contact Active Forms -->
+
+<script>
+    
+    var showFirstPanel = '{{dose.first_panel_is_image}}';
+    var showSecondPanel = '{{dose.second_panel_is_image}}';
+
+    var firstResource = '{{dose.show_first_resource}}';
+    var secondResource = '{{dose.show_second_resource}}';
+    var thirdResource = '{{dose.show_third_resource}}';
+    var fourthResource = '{{dose.show_fourth_resource}}';
+    var fifthResource = '{{dose.show_fifth_resource}}';
+    var sixthResource = '{{dose.show_sixth_resource}}';
+
+    if(firstResource === 'False') document.getElementById('first').style.display = 'none';
+    if(secondResource === 'False') document.getElementById('second').style.display = 'none';
+    if(thirdResource === 'False') document.getElementById('third').style.display = 'none';
+    if(fourthResource === 'False') document.getElementById('fourth').style.display = 'none';
+    if(fifthResource === 'False') document.getElementById('fifth').style.display = 'none';
+    if(sixthResource === 'False') document.getElementById('sixth').style.display = 'none';
+
+    
+    if(showFirstPanel === 'True')
+    {
+        document.getElementById('a').style.display = 'none';
+        document.getElementById('b').style.display = '';
+    }else
+    {
+        document.getElementById('a').style.display = '';
+        document.getElementById('b').style.display = 'none'
+    }
+
+    if(showSecondPanel === 'True')
+    {
+        document.getElementById('c').style.display = 'none';
+        document.getElementById('d').style.display = '';
+    }else
+    {
+        document.getElementById('c').style.display = '';
+        document.getElementById('d').style.display = 'none'
+    }
+    
+
+    
+    
+
+    function programData() {
+
+        return {
+            highlighted: {},
+            observe() {
+                var observer = new IntersectionObserver(entries => {
+                    // isIntersecting is true when element and viewport are overlapping
+                    // isIntersecting is false when element and viewport don't overlap
+                    if(entries[0].isIntersecting === true)
+                    {
+                        this.highlighted[entries[0].target.id + '-marker'] = true;
+                    }
+                    else {
+                        this.highlighted[entries[0].target.id + '-marker'] = false;
+                    }                                   
+                }, { threshold: [0] });
+
+                document.querySelectorAll(".observerTrigger").forEach((element) => observer.observe(element))                
+            },
+            firstQOpen: false,
+            secondQOpen: false,
+            thirdQOpen: false,
+            scrollTo(position)
+            {
+                var elmnt = document.getElementById(position);
+                elmnt.scrollIntoView(); 
+            }
+
+
+        }
+    }
+
+</script>

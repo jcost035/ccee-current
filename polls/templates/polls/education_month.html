@@ -1,0 +1,438 @@
+{% load static %}
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9H967QXNHX"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9H967QXNHX');
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link href="{% static "site.css" %}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/ defer>
+
+<style>
+    #id_captcha_1 {
+        width: 100%;
+        border-radius: 0.25rem;
+        margin-top: 10px;
+        border-color: #0071BC;
+        border-width: 2px;
+    }
+    .captcha{
+        height: 3rem;
+    } 
+</style>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" defer>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet" defer> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" defer>
+
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+<script>
+  
+  function data() {
+    return {
+      open: false,
+      ourteamOpen : false,
+      centersOpen : false,
+      bodOpen : false,
+      dapOpen : false,
+      arOpen : false,
+      atTop : true,
+      popupOpen : false,
+      whatwedoOpen : false,
+      menuClear(openMenu) {
+        if(openMenu == 'ourteamOpen')
+        {
+          this.ourteamOpen = true
+        }
+        else
+        {
+          this.ourteamOpen = false
+        }
+
+        if(openMenu == 'centersOpen')
+        {
+          this.centersOpen = true
+        }
+        else
+        {
+          this.centersOpen = false
+        }
+
+        if(openMenu == 'bodOpen')
+        {
+          this.bodOpen = true
+        }
+        else
+        {
+          this.bodOpen = false
+        }
+
+        if(openMenu == 'dapOpen')
+        {
+          this.dapOpen = true
+        }
+        else
+        {
+          this.dapOpen = false
+        }
+
+        if(openMenu == 'arOpen')
+        {
+          this.arOpen = true
+        }
+        else
+        {
+          this.arOpen = false
+        }
+        
+      },
+      
+      clearsubmenus()
+      {
+        this.ourteamOpen = false
+        this.centersOpen = false
+        this.bodOpen = false
+        this.dapOpen = false
+        this.arOpen = false
+      }
+    }
+  }
+</script>
+
+<script>
+  function popupData() {
+      return {
+        popupOpen : false
+      }
+  }
+</script>
+
+<script>
+  function panelData() {
+      return {
+        firstpanelOpen : true,
+        secondpanelOpen : false,
+        thirdpanelOpen : false,
+        secondpanelText : false,
+        thirdpanelText : false,
+      }
+  }
+
+  function petitionData() {
+      return {
+          petitionPopupOpen: false
+      }
+  }
+</script>
+
+{% include "polls/nav.html"%}
+
+
+
+<div class="flex flex-col space-y-8" x-data="petitionData()">
+    <div class="m-md:hidden absolute mt-8 h-96 z-0 overflow-hidden w-full">
+        <img class="mx-auto" src="{% static 'education_month_2023.jpg' %}" class="object-cover ">
+    </div>
+
+    <div class="flex flex-col">
+
+        <div class="mt-8 z-10 mx-auto w-11/12 md:w-4/6 flex m-md:flex-col flex-row items-end">
+            <div class="md:w-1/3 mt-24 md:mt-50  flex flex-col justify-center bg-cblue m-md:rounded-t-3xl md:rounded-bl-3xl rounded-t-3xl px-10 py-10">
+                <span class=" font-bebas  text-white text-5xl">October 2023 is Economic Education Month!</span>
+            </div>
+            <div class="md:w-2/3 md:mt-72 flex flex-col bg-cblue m-md:rounded-b-3xl md:rounded-r-3xl px-10 py-6">
+                <span class="-ml-6 font-bebas text-cgreen text-2xl">Economic education is more important now than ever.</span>
+                <p class="-ml-6  text-white text-l">
+                    This October, students, instructors, financial institutions, and other partners throughout California will recognize and celebrate the importance of economic education, including support for economics learning in schools. 
+                </p>
+            </div>
+        </div>
+        
+        <!-- down arrow -->
+        <div class="mx-auto w-28 overflow-hidden inline-block">
+            <div class=" h-20 w-20 bg-cblue-light -rotate-45 transform origin-top-left"></div>
+        </div>
+    </div>
+
+    <div class="flex flex-col w-11/12 md:w-9/12 mx-auto px-4 md:px-12 py-6 rounded-lg border-2 border-cblue-light text-center">
+        <h1 class="font-bebas text-cblue text-3xl">Why “celebrate” economic education? </h1>
+            <div class="flex flex-col space-y-4 mt-4">
+                <b>It’s simple: economic literacy is fundamental to our democracy, society, and economy.</b> 
+                <p> 
+                    When students learn about economics, they become: 
+                    <div class="text-left mx-auto"> 
+                        <li>more informed consumers and savers</li> 
+                        <li>involved citizens </li> 
+                        <li>better lifelong decision-makers</li> 
+                    </div>
+                </p>
+                <p>
+                    However, when some folks hear the word “economics,” they might immediately think that the subject is hard to understand, boring, or irrelevant. 
+                </p>
+                <p>
+                    This issue is only made worse considering the current state of economic education in K-12 schools. In California, economics is taught during senior year – too late, too little, and too hard to fit into an already jam-packed senior year! 
+                </p>
+
+                <p>
+                    Economics teaches us life-changing skills. That’s cause for celebration! 
+                </p>
+            </div>
+    </div>
+
+    <div class="md:w-9/12 mx-auto flex m-md:flex-col m-md:space-y-12 flex-row ">
+        <div class="w-10/12 m-md:mx-auto md:w-2/3 flex flex-col space-y-4 text-left">
+            <span class="font-bebas text-2xl  text-gray-800">What’s happening during Economic Education Month? </span>
+            <div class="text-md text-gray-500   flex flex-col space-y-2">
+                <p>
+                    All month long with the California Council on Economic Education, students, educators, and the public will learn how economics is an exciting, dynamic subject that affects everyone’s life every day. Through events, lesson ideas, and social media activities, Californians will learn how economic education cultivates intergenerational opportunity and mobility. 
+                </p>   
+                <p>
+                    Economic Education Month will also be recognized nationally, and in states throughout the country. 
+                </p> 
+            </div>
+        </div>
+
+        <div class="md:w-1/3 rounded-lg bg-cgreen flex flex-col mx-4 px-6 py-4 text-center">
+            <div class="-mt-10 mb-2 flex flex-row w-4/6 mx-auto space-x-2">
+                <div class="flex h-16 w-16 items-center rounded-full border border-cblue-dark bg-cblue-light">
+                    <svg class="h-12 m-auto p-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" version="1.0" viewBox="4.2 3.5 85.6 86.1" zoomAndPan="magnify" style="fill: rgb(0, 113, 188);" role="img" aria-label="Bullseye Target Icon"><g id="__id49_sw2j3749r"><path d="M43,50.5c0.6,0.5,1.4,0.4,1.8,0l25.4-25.4l5.7,1.9c0.5,0.1,1,0,1.3-0.3l12.2-12.3c0.3-0.3,0.4-0.7,0.3-1.2 c-0.1-0.4-0.4-0.8-0.8-0.9l-4.5-1.5l0.4-0.4c0.5-0.5,0.5-1.3,0-1.8c-0.5-0.5-1.3-0.5-1.8,0l-0.4,0.4l-1.5-4.6 c-0.1-0.4-0.5-0.7-0.9-0.8c-0.4-0.1-0.8,0-1.2,0.3L66.7,16.3c-0.3,0.3-0.4,0.8-0.3,1.3l1.9,5.8l-2.2,2.2 c-5.9-5.4-13.4-8.5-21.4-8.7v-4.6c0-0.7-0.6-1.2-1.2-1.2s-1.2,0.6-1.2,1.2v4.6C24.7,17.4,10.6,31.5,10,49.1H5.4 c-0.7,0-1.2,0.6-1.2,1.2s0.6,1.2,1.2,1.2H10c0.6,17.6,14.7,31.7,32.3,32.3v4.6c0,0.7,0.6,1.2,1.2,1.2s1.2-0.6,1.2-1.2v-4.6 c17.6-0.6,31.7-14.7,32.3-32.3h4.6c0.7,0,1.2-0.6,1.2-1.2s-0.6-1.2-1.2-1.2h-4.6c-0.2-7.1-2.8-14-7.2-19.5 c-0.4-0.6-1.2-0.7-1.8-0.2s-0.7,1.2-0.2,1.8c4.1,5.1,6.4,11.4,6.6,18h-3.8c-0.7,0-1.2,0.6-1.2,1.2s0.6,1.2,1.2,1.2h3.8 C74,67.8,61,80.8,44.8,81.4v-3.8c0-0.7-0.6-1.2-1.2-1.2s-1.2,0.6-1.2,1.2v3.8c-16.2-0.6-29.2-13.6-29.8-29.8h3.8 c0.7,0,1.2-0.6,1.2-1.2s-0.6-1.2-1.2-1.2h-3.8c0.6-16.2,13.6-29.2,29.8-29.8v3.8c0,0.7,0.6,1.2,1.2,1.2s1.2-0.6,1.2-1.2v-3.8 c7.3,0.3,14.2,3.1,19.6,8l-6,6c-9.5-8.3-23.9-7.2-32.2,2.3S19,59.5,28.5,67.8s23.9,7.2,32.2-2.3c7-8.1,7.5-19.9,1.1-28.5L51.5,47.2 c1.8,4.4-0.4,9.3-4.8,11.1c-4.4,1.8-9.3-0.4-11.1-4.8c-1.8-4.4,0.4-9.3,4.8-11.1c2.6-1.1,5.6-0.7,8,0.9L43,48.7 C42.5,49.2,42.5,50,43,50.5C43,50.5,43,50.5,43,50.5z M86.2,14.1L75.9,24.4l-3.8-1.3l10.3-10.3L86.2,14.1z" style="fill: inherit;"></path></g></svg>
+                </div>
+                <div class="flex h-16 w-16 items-center rounded-full border border-cblue-dark bg-cblue-light">
+                    <img class="h-12 mx-auto p-1" src="{% static 'icon.png' %}">    
+                </div>
+                <div class="flex h-16 w-16 items-center rounded-full border border-cblue-dark bg-cblue-light">
+                    <img class="h-12 mx-auto p-1" src="{% static 'index.png' %}">    
+                </div>
+            </div>
+            <span class="font-bebas text-white text-2xl">economics is all about <br> Goals, Resources, and Decisions!</span>
+            <p class="text-gray-600">
+                Economics is life-changing – it can show you how to use your available resources to make savvy choices in order to reach your goals!
+            </p>
+        </div>
+
+    </div>
+
+    <div class="flex m-md:flex-col flex-row w-11/12 md:w-8/12 mx-auto">
+        <div class="md:w-1/3 py-4 px-6 rounded-lg bg-cblue text-white text-right font-bebas text-5xl md:text-6xl leading-tight">
+            how you can celebrate Economic Education Month:
+        </div>
+        <!-- down arrow -->
+        <div class="md:hidden mx-auto w-28 overflow-hidden inline-block">
+            <div class=" h-20 w-20 bg-cblue-light -rotate-45 transform origin-top-left"></div>
+        </div>
+
+        <!-- right arrow -->
+        <div class="m-md:hidden pt-36 w-16  overflow-hidden inline-block">
+            <div class=" h-16  bg-cblue-light rotate-45 transform origin-top-left"></div>
+        </div>
+        <div class="md:w-2/3 flex flex-col space-y-6 ">
+            <div class="flex flex-row space-x-4 md:px-10">
+                <img class="h-12" src="{% static 'notepad.png' %}">
+                <span><b class="text-cblue">
+                    Endorse</b> Economic Education Month by adding your name to the growing list of partners. 
+                    <a href="#endorse" class="text-cblue hover:text-cblue-light cursor-pointer font-bold">Click here to sign!</a>
+                </span>
+            </div>
+            <div class="flex flex-row space-x-4 md:px-10">
+                <img class="h-12" src="{% static 'iphone.png' %}">
+                <span><b class="text-cblue">Contact</b> your local representatives to advocate for robust economics instruction within your local K-12 school district. </span>
+            </div>
+            <div class="flex flex-row space-x-4 md:px-10">
+                <img class="h-12" src="{% static 'mail.png' %}">
+                <span><b class="text-cblue">Sign up</b> for periodic updates about CCEE’s economic and financial literacy events + programs, and how you can volunteer! </span>
+            </div>
+            <div class="flex flex-row space-x-4 md:px-10">
+                <img class="h-12" src="{% static 'thumb.png' %}">
+                <span><b class="text-cblue">Share</b> the campaign to your own social account, or create your own post! We can help! </span>
+            </div>
+            <div class="flex flex-row space-x-4 md:px-10">
+                <img class="h-12" src="{% static 'shirt.png' %}">
+                <span><b class="text-cblue">Represent</b> economics by wearing and using your economic education gear – this is the perfect time to break out the swag you’ve gotten at CCEE conferences, workshops, and events! </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col">
+        <span class=" mx-auto rounded-lg p-4 bg-cgreen text-white font-bebas text-5xl">TAKE ACTION:</span>
+        <!-- down arrow -->
+        <div class="mx-auto w-24 overflow-hidden inline-block">
+            <div class=" h-16 w-16 bg-cblue-light -rotate-45 transform origin-top-left"></div>
+        </div>
+    </div>
+    
+
+    <div class="w-10/12 md:w-1/2 mx-auto flex flex-col space-y-6 ">
+        <div class="flex flex-row space-x-4 m-md:pl-10 md:px-10 border border-cblue-light items-center rounded py-4">
+            <div class="-ml-16 flex rounded-full  w-20 h-16 bg-cgreen">
+                <img class="h-8 m-auto" src="{% static 'people.png' %}">
+            </div>
+            <span class="w-5/6"><b>Everyone</b> can use <b class="text-cgreen">#EconEdMonth</b> to join the conversation and share your experiences with economic education. Keep visiting this page for more updates!</span>
+        </div>
+        <div class="flex flex-row space-x-4 m-md:pl-10 md:px-10 border border-cblue-light items-center rounded py-4">
+            <div class="-ml-16 flex rounded-full  w-20 h-16 bg-cgreen">
+                <img class="h-8 m-auto" src="{% static 'teacher.png' %}">
+            </div>
+            <span class="w-5/6"><b>Teachers and K-12 staff</b> can invite community and business leaders to visit their students to share how their decision-making process compares to families making choices every day. </span>
+        </div>
+        <div class="flex flex-row space-x-4 m-md:pl-10 md:px-10 border border-cblue-light items-center rounded py-4">
+            <div class="-ml-16 flex rounded-full  w-20 h-16 bg-cgreen">
+                <img class="h-8 m-auto" src="{% static 'family.png' %}">
+            </div>
+            <span class="w-5/6"><b>Families</b> can have in-depth conversations about how they make decisions for their homes -- join us at a Family Financial Literacy Event! </span>
+        </div>
+        <div class="flex flex-row space-x-4 m-md:pl-10 md:px-10 border border-cblue-light items-center rounded py-4">
+            <div class="-ml-16 flex rounded-full  w-20 h-16 bg-cgreen">
+                <img class="h-8 m-auto" src="{% static 'girl.png' %}">
+            </div>
+            <span class="w-5/6"><b>Business, community, and government leaders</b> can support CCEE’s economic and personal finance programs throughout California, to help everyone access economics and financial literacy, regardless of their background or circumstances. </span>
+        </div>
+    </div>
+
+    <div class="flex flex-col space-y-4 mx-auto w-2/3">
+        <span class="font-roboto text-xl mx-auto">
+            Not from California but want to support Economic Education Month in your state?
+        </span>
+
+        <a href="https://www.econedmonth.org/" target="_blank" class="border-8 border-cgreen rounded-lg p-3 font-roboto text-cgreen hover:bg-cgreen hover:text-white text-center text-2xl md:w-1/3 w-full mx-auto">
+            Click Here
+        </a>
+
+        <div id="endorse"></div>
+    
+        <div class="flex flex-col">
+            <span class=" mx-auto rounded-lg p-4 bg-cblue text-white font-bebas text-5xl">Endorse econ ed month</span>
+            <!-- down arrow -->
+            <div class="mx-auto w-24 overflow-hidden inline-block">
+                <div class=" h-16 w-16 bg-cblue-light -rotate-45 transform origin-top-left"></div>
+            </div>
+        </div>
+
+        <div class="flex md:flex-row flex-col m-md:space-y-4 md:space-x-4 justify-center mx-auto">
+            <video class="rounded-lg md:w-1/3"  controls>
+                <source src="{% static 'econed/EconEdMonth.mp4' %}" type="video/mp4"> 
+            </video>
+            <div class="text-lg md:w-1/2">
+                Happy <u><b>#EconEdMonth</b> from California's Superintendent of Public Instruction <b>Tony Thurmond, California State Treasurer Fiona Ma's Office</b>, California Assemblymember Blanca Rubio</u> (D-48), <u>Former U.S. Treasurer Rosario Marin, Los Angeles Civil Rights Department Executive Director Capri Maddox, Founder of the ReWirement Project Darrell Brown, and Executive Director of the Representation <b>Project Caroline Heldman.</b></u>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <span class="mx-auto w-11/12 md:w-1/2 font-bebas text-cblue text-4xl text-center">
+        add your name to the growing list of advocates who support robust k-12 economic education!
+    </span>
+
+    <div class="mx-auto w-10/12 md:w-2/3 text-center text-lg flex flex-col space-y-4">
+        <p>
+            WHEREAS: Economics is the study of making sound decisions in managing scarce
+            resources, which is an essential skill for all people.
+        </p>
+        <p>
+            WHEREAS: The aim of economic education is to equip students with skills and tools for
+            their economic roles as productive workers, informed consumers and savers, involved citizens, and lifelong decision-makers in a globally interdependent world.
+        </p>
+        <p>
+            WHEREAS: Our democracy depends on the active support and involvement of economically
+            literate citizens who can understand and evaluate critical issues of public policy and the global
+            economy.
+        </p>
+        <p>
+            WHEREAS:  Economic education must be maintained in our K-12 and post-secondary schools,
+            where students learn economic concepts to understand their world and apply sound economic
+            decision making.
+        </p>
+        <p>
+            WHEREAS: Economic education in our schools depends on educators equipped with high quality
+            training and resources to ensure students have equitable access to classroom lessons that develop the 
+            skills necessary to make informed choices as citizens in order to build their human capital.
+        </p>
+    </div>
+
+    <form action="/econedmonth" method="post" class="hidden mx-auto flex flex-col space-y-4 w-1/4">
+        {% csrf_token %}
+        {% for field in form %}
+            {% if field.label != "Please enter the characters in the image" %}
+                <label class="text-cblue font-roboto text-xl" for="{{ field.auto_id }}">{{ field.label }}</label>
+                {{ field }}
+            {% else %}
+                <label class="text-gray-500 text-sm" for="{{ field.auto_id }}">{{ field.label }}</label>
+                <div class="flex flex-row space-x-2 w-2/3 self-center">
+                    {{ field }}
+                </div>
+            {% endif %}
+
+            
+        {% endfor %}
+        <button class="bg-cblue rounded text-white font-bebas text-2xl self-center w-1/2" type="submit">Sign</button>
+        
+    </form>
+
+    <span class="mx-auto flex flex-row text-lg justify-center">
+        <img class="h-12 px-4" src="{% static 'notepad.png' %}">
+        <span class="w-10/12 ">NOW, THEREFORE,: I, _____________, DO HEREBY PROCLAIM the month of October as ECONOMIC EDUCATION MONTH </span>
+    </span>
+
+    <button class="bg-red-500 hover:bg-red-700 rounded-full text-white font-bebas text-xl py-2 px-4 self-center w-11/12 md:w-1/4" @click="petitionPopupOpen=true">
+        add your name to the economic education month proclamation
+    </button>
+
+    <!--petition pop up-->
+    <div>
+
+        <!-- Dialog (full screen) -->
+        <div class=" fixed top-0 left-0 flex items-center justify-center w-full h-full z-100" style="background-color: rgba(0,0,0,.5);" x-show="petitionPopupOpen" x-cloak>
+
+            <!-- A basic modal dialog with title, body and one button to close -->
+            <div class=" h-auto p-4 mx-2  bg-cblue rounded shadow-xl  md:p-6 lg:p-8 md:mx-0 md:max-w-4xl" @click.away="petitionPopupOpen = false">
+                
+                <div class="flex flex-col space-y-4 mx-auto ">
+                    <form action="/econedmonth" method="post" class="mx-auto flex flex-col space-y-4">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            {% if field.label != "Please enter the characters in the image" %}
+                                <label class="text-cgreen font-roboto text-xl" for="{{ field.auto_id }}">{{ field.label }}</label>
+                                {{ field }}
+                            {% else %}
+                                <label class="text-white text-sm" for="{{ field.auto_id }}">{{ field.label }}</label>
+                                <div class="flex flex-row space-x-2 w-2/3 self-center">
+                                    {{ field }}
+                                </div>
+                            {% endif %}
+                
+                            
+                        {% endfor %}
+                        <button class="bg-cgreen hover:bg-cgreen-dark rounded text-white font-bebas text-2xl self-center w-1/2" type="submit">Sign</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--end petition pop up-->
+
+    <div class="ml-24">
+        <ul id="list" class="grid md:grid-cols-3 gap-2 md:w-1/2 mx-auto text-xl">    
+            {% for signee in signees %}
+            <li class="text-left">{{ signee.name }}</li>
+            {% endfor %}
+            
+            
+        </ul>
+    </div>
+</div>
+{% include 'polls/footer.html'%}
+
+ 

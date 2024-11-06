@@ -1,0 +1,204 @@
+<head>
+    {% load static %}
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9H967QXNHX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9H967QXNHX');
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="{% static 'site.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+    <script>
+        function data() {
+            return {
+                open: false,
+                ourteamOpen: false,
+                centersOpen: false,
+                bodOpen: false,
+                dapOpen: false,
+                arOpen: false,
+                atTop: true,
+                popupOpen: false,
+                whatwedoOpen: false,
+                menuClear(openMenu) {
+                    if (openMenu == 'ourteamOpen') {
+                        this.ourteamOpen = true
+                    } else {
+                        this.ourteamOpen = false
+                    }
+
+                    if (openMenu == 'centersOpen') {
+                        this.centersOpen = true
+                    } else {
+                        this.centersOpen = false
+                    }
+
+                    if (openMenu == 'bodOpen') {
+                        this.bodOpen = true
+                    } else {
+                        this.bodOpen = false
+                    }
+
+                    if (openMenu == 'dapOpen') {
+                        this.dapOpen = true
+                    } else {
+                        this.dapOpen = false
+                    }
+
+                    if (openMenu == 'arOpen') {
+                        this.arOpen = true
+                    } else {
+                        this.arOpen = false
+                    }
+
+                },
+
+                clearsubmenus() {
+                    this.ourteamOpen = false
+                    this.centersOpen = false
+                    this.bodOpen = false
+                    this.dapOpen = false
+                    this.arOpen = false
+                }
+            }
+        }
+    </script>
+
+
+    <script>
+        function popupData() {
+            return {
+                popupOpen: false
+            }
+        }
+    </script>
+
+    <script>
+        function cardData() {
+            return {
+                caset: true,
+                fed: true,
+                smartpath: true,
+                workshops: true
+            }
+        }
+    </script>
+
+
+</head>
+
+{% include 'polls/nav.html'%}
+
+<div class="  mx-auto flex flex-col text-center md:text-left" x-data="cardData()">
+    <div class="m-md:mt-24 flex flex-col md:flex-row mt-14 max-w-7xl mx-auto w-5/6">
+        <div class="rounded-lg md:h-96 w-full   h-72 m-md:mx-2 mt-16 bg-cover " style=" background-image: url({% static 'teacherpic5.jpg' %});"></div>
+        <div class="md:ml-10 md:w-full">
+            <div class=" md:mt-32 mt-12 md:-mr-32"><span class="text-cblue text-5xl md:text-8xl p-2 rounded font-bebas m-md:text-center">Educator Programs</span></div>
+            <p class=" font-semibold text-gray-500 md:mx-4 mt-2">We know that when teachers feel supported, their students succeed. Economic and financial literacy is the gateway to opportunity and mobility, and you have the power to make that happen for your students right in your very own classroom! CCEE’s programs are designed to meet you where you’re at, so you can feel confident in teaching engaging and relevant economics and personal finance. Browse our programs below to learn more and save your spot for upcoming dates. </p>
+        </div>
+    </div>
+    <div class=" flex flex-col grid grid-cols-1 lg:grid-cols-3 gap-4  text-center  mx-4 w-2/3 mx-auto self-center mt-24">
+
+
+        <div class="">
+
+
+            <div @click="window.location.href='https://www.caset.org/economics-for-empowerment'" class="cursor-pointer relative  overflow-hidden rounded-md justify-center content-center text-center h-64" style="  background-repeat: no-repeat; background-size: 250% 32rem; background-position: center; "
+                x-bind:class="{'h-150': !fed }">
+                <div class="absolute bg-cblue h-full w-full overflow-hidden opacity-100 z-10"></div>
+
+                <div class="relative z-10 md:mx-2" @mouseover="fed = false" @mouseover.away="fed = true">
+                    <h1 class="text-2xl font-bebas text-white z-10 mt-8 mb-1">9th-12th grade, SPED</h1>
+                    <i class="fas fa-solid fa-award fa-5x mb-6" style="color: #ffffff"></i>
+                    <h1 class="text-3xl font-bebas text-white z-10 mb-8">Economics for Empowerment Seminar</h1>
+                    <p class="relative overflow-ellipses mx-4 font-semibold text-lg text-white z-10 " x-show="fed"></p>
+                    <p class="relative overflow-ellipses mx-4 font-semibold text-lg text-white z-10 " x-show="!fed" x-transition:enter="transition ease-out duration-300" x-transition:leave="transition ease-in duration-300">
+                        Together with the California Association of School Economics Teachers, CCEE hosts a multi-day seminar where educators who are teaching California’s high school economics come together to learn engaging instructional strategies to bring back to their students.     
+                    </p>
+                    <span class="text-2xl text-cgreen font-bebas m-2" > </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden">
+            <div @click="window.location.href='programs/federal reserve institute'" class="cursor-pointer relative  overflow-hidden rounded-md justify-center content-center text-center h-64"  x-bind:class="{'h-128': !caset }">
+                <div class="absolute bg-cblue h-full w-full overflow-hidden opacity-100 z-10"></div>
+
+                <div class="relative z-10" @mouseover="caset = false" @mouseover.away="caset = true">
+                    <h1 class="text-2xl font-bebas text-white z-10 
+                    mt-4 mb-1">1st-8th grade, SPED</h1>
+                    <i class="fas fa-university fa-5x mb-6" style="color: #ffffff"></i>
+                    <h1 class="text-4xl font-bebas text-white z-10 mb-6 w-5/6 mx-auto">Federal Reserve Institute</h1>
+                    <p class="relative overflow-ellipses mx-4 font-semibold text-lg text-white z-10 " x-show="caset"></p>
+                    <p class="relative overflow-ellipses mx-4 font-semibold text-lg text-white z-10 " x-show="!caset" x-transition:enter="transition ease-out duration-300" x-transition:leave="transition ease-in duration-300">
+                        The Federal Reserve Institute is hosted in San Diego for a week-long immersive program where teachers learn directly from the Federal Reserve Bank’s economic educators. 
+                    </p>
+                    <span class="text-2xl text-cgreen font-bebas m-2" > </span>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div @click="window.location.href='programs/$martpath'" class="cursor-pointer relative bg-cblue overflow-hidden rounded-md justify-center content-center text-center h-64"  x-bind:class="{'h-175': !smartpath }">
+                <div class="absolute bg-cblue h-full w-full overflow-hidden opacity-100 z-10"></div>
+
+                <div class="relative z-10" @mouseover="smartpath = false" @mouseover.away="smartpath = true">
+                    <h1 class="text-2xl font-bebas text-white z-10 mt-12">1st-8th grade, SPED</h1>
+                    <img class="px-3 justify-self-center mx-auto" src="{% static 'programs/California $martPath Program Logo.png' %}">
+                    
+                    <p class="relative overflow-ellipses mx-4 font-semibold text-lg text-white z-10 " x-show="smartpath"></p>
+                    <p class="relative overflow-ellipses mx-4 font-semibold text-lg text-white z-10 mt-12" x-show="!smartpath" x-transition:enter="transition ease-out duration-300" x-transition:leave="transition ease-in duration-300">
+                        Developed by leading practitioners working hand-in-hand with teachers, The $martPath Platform provides simple, fun lessons that bring economic and financial education to life in your classroom. $martPath units teach students about personal financial responsibility (such as saving, prudent spending, and prioritizing needs and wants) through grade-appropriate, curriculum-aligned, interactive lessons.
+                    </p>
+                    <span class="text-2xl text-cgreen font-bebas m-2" > </span>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div @click="window.location.href='programs/educator workshops'" class="cursor-pointer relative bg-cblue overflow-hidden rounded-md justify-center content-center text-center h-64" x-bind:class="{'h-128': !workshops }">
+                <div class="absolute bg-cblue h-full w-full overflow-hidden opacity-100 z-10"></div>
+
+                <div class="relative z-10" @mouseover="workshops = false" @mouseover.away="workshops = true">
+                    <h1 class="text-2xl font-bebas text-white z-10 mt-12">ALL GRADES</h1>
+                    <img class="px-1 mt-2 self-center mb-20" src="{% static 'programs/Educator Workshops (3).png' %}">
+
+                    <p class="relative overflow-ellipses mx-4 font-semibold text-lg text-white z-10 " x-show="workshops"></p>
+                    <p class="relative overflow-ellipses mx-4 font-semibold text-lg text-white z-10 " x-show="!workshops" x-transition:enter="transition ease-out duration-300" x-transition:leave="transition ease-in duration-300">
+                        CCEE’s interactive workshops support teachers efforts to deliver the most engaging and relevant economics and personal finance content to their students.
+                    </p>
+                    <span class="text-2xl text-cgreen"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="flex flex-col border border-gray-900 flex flex-col justify-center align-center rounded-lg mx-3 md:mx-32 my-12">
+        <div class="mx-auto px-2 md:px-48 text-center text-5xl md:text-6xl text-cblue font-roboto mt-12">
+            If you would like to request a workshop for K-12 educators or paraeducators, please click here. 
+        </div>
+        <div class="hidden mx-auto px-2 md:px-48 text-center text-5xl md:text-4xl text-cblue font-roboto mt-4">
+            If you would like to request a workshop for K-12 educators or paraeducators, please click here. 
+        </div>
+        <a href="/contact" class="m-md:w-2/3 border-2 text-white border-yellow-500 rounded-lg font-roboto text-3xl hover:bg-white hover:text-yellow-500 bg-yellow-500 text-white mx-auto my-12 py-2 px-3">
+            Contact Our Programs Team
+        </a>
+    </div>
+    {% include 'polls/footer.html'%}
+</div>

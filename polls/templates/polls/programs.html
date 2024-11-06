@@ -1,0 +1,423 @@
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9H967QXNHX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9H967QXNHX');
+    </script>
+
+    {% load static %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="{% static 'site.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+
+
+
+
+</head>
+
+<body>
+    {% include 'polls/nav.html'%}
+    <div class="hidden absolute bg-cblue w-full h-2/3 -mt-16"></div>
+    <div class="relative mx-auto z-10" x-data="programData()" x-init="observe()">
+        <div class="bg-cblue mb-24 " {% if program.banner_photo.url != "" %} style="background-blend-mode: multiply; background-color: rgba(0,0,0,0.4);  background-image: url('{{program.banner_photo.url}}'); background-repeat: no-repeat; background-size: cover;" {% endif %}>
+            <div class="pb-16 w-9/12 m-md:w-11/12 mx-auto" >
+                <div class="relative md:mt-16 text-white text-3xl font-bebas pt-32"><span class="hidden bg-cgreen px-2"></span></div>
+                <div class="relative font-bebas text-7xl text-white  ">{{program.name}}</div>
+                <div class="relative font-bebas text-3xl text-white pl-3 ">{{program.grade_range}}</div>
+                <p class="text-white text-xl w-1/2 pt-6 font-roboto font-thin">{{program.description}}</p>
+
+                {% if program.name ==  'Family Financial Literacy Event' %}
+                    <p class="text-white text-xl w-1/2 pt-6 font-roboto font-thin">Register for an upcoming FFLE below!</p>
+                {% elif program.name == 'federal reserve institute' %}
+                    <p class="text-white text-xl w-1/2 pt-6 font-roboto font-thin">Registration is closed</p>
+                {% elif program.name == 'National Economics Challenge' or program.name == 'Personal Finance Challenge' %}
+                    <p class="text-white text-xl w-1/2 pt-6 font-roboto font-thin">Register for an upcoming teacher information session below</p>
+                {% elif program.name == "The Financial Advisor's Contest" %}
+                {% else %}
+                    <button onclick="location.href='{{program.registration_url}}'" class="hidden rounded bg-yellow-500 hover:bg-yellow-600 text-white hover:bg-yellow-800 font-roboto py-2 px-4 mt-6 font-light text-xl">
+                        Register
+                    </button>
+                {% endif %}
+
+
+                <button class="hidden rounded border-2 border-cgreen bg-cgreen text-white hover:border-cgreen-dark hover:bg-cgreen-dark font-roboto py-2 px-4 mt-6 font-light text-xl">Other thing</button>
+            </div>
+        </div>
+        <div class="w-9/12 m-md:w-11/12 mx-auto">
+        <div class="sticky top-32  w-44  bg-gray-300 mt-24 z-50 rounded-lg m-md:hidden ">
+            <button class="hover:bg-gray-400 w-full p-4 font-roboto text-cblue text-lg rounded-t-lg" @click="scrollTo('about')" x-bind:class="{'border-r-4 border-cgreen' : highlighted['about-marker']}">What you'll experience</button>
+            <button class="hover:bg-gray-400 w-full p-4 font-roboto text-cblue text-lg" @click="scrollTo('how_works')" x-bind:class="{'border-r-4 border-cgreen' : highlighted['video-marker']}">How the program works</button>
+            <button class="hover:bg-gray-400 w-full p-4 font-roboto text-cblue text-lg" @click="scrollTo('faq')" x-bind:class="{'border-r-4 border-cgreen' : highlighted['faq-marker']}">FAQs</button>
+            <button class="hover:bg-gray-400 w-full p-4 font-roboto text-cblue text-lg" @click="scrollTo('supporters')" x-bind:class="{'border-r-4 border-cgreen' : highlighted['supporters-marker']}">Supporters</button>
+            <button class="hover:bg-gray-400 w-full p-4 pb-6 font-roboto text-cblue text-lg rounded-b-lg" @click="scrollTo('action')" x-bind:class="{'border-r-4 border-cgreen' : highlighted['action-marker']}">Get Involved</button>
+        </div>
+
+        <div class=" border-4 rounded border-cblue md:ml-48 md:-mt-96 space-x-4 px-4 py-4">
+            <h1 class="text-5xl text-center font-light font-bebas ">Upcoming Events</h1>
+            <div class="flex  flex-col md:flex-row justify-between align-middle">
+                <div class="flex flex-col md:flex-row items-end content-center mx-auto">
+                    {% for event in event_list|slice:"4" %}
+                        <div class="px-6 m-md:py-6 py-2 font-bold flex flex-col text-center">
+                            <div class="text-xl text-cgreen">{{event.date}}</div>
+                            <div class="text-sm">{{event.name}}</div>
+                            <a href="{{event.registration_url}}" target="_blank" id="button" 
+                                class="w-full rounded-lg font-semibold btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border-cblue border-2 bg-white hover:bg-cblue hover:text-white  text-cblue font-normal py-1 mt-2 px-3">
+                                Register
+                            </a>
+                        </div>
+                    {% endfor %}
+                    {% if not event_list%}
+                        <div class="font-bold md:text-xl text-lg font-roboto text-center py-6">No upcoming events at the moment</div>
+                    {% endif %}
+                </div>
+                <a href="/calendar" class="font-bold text-center px-6 py-1 text-white bg-cblue hover:bg-cblue-dark rounded text-xl my-auto">Full Calendar</a>
+            </div>
+        </div>
+        
+        <div class="flex  flex-col m-md:space-y-4  md:ml-48 mt-14 items-end  observerTrigger" id="about">
+            <div class="flex flex-col md:w-full h-full">
+                <img src="{{program.logo_path}}" class=" object-cover object-center rounded " alt="" />
+                {% comment %} <div class="h-full w-full mx-auto">
+                    <img class="w-full md:w-1/2 md:mx-auto object-cover object-center rounded-lg max-h-128" src="{{program.photo_path.url}}" alt="" />
+                </div> {% endcomment %}
+                <div class="md:w-10/12 mx-auto bg-gray-300 rounded text-center px-6 pb-6 pt-4 mt-2">
+                    <h1 class="text-5xl font-bebas text-cgreen">About the Program</h1>
+                    <p class="font-roboto font-thin text-gray-600">{{program.about}}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        
+        <div id="how_works"></div>
+        <!--optional html content start-->
+        <div id="html_content" class="my-12 mx-3 md:ml-48">
+            {{program.html_content|safe}}
+        </div>
+        <!--optional html content end-->
+
+        <div id="bg-stripe" class="absolute md:w-170 bg-cblue h-96 m-md:h-256 -ml-72 -mr-64 -z-1 mt-8"></div>
+
+        <!--content panel start-->
+        <div class="hidden flex flex-col md:flex-row w-full mt-8 md:space-x-10 m-md:space-y-8 mt-20 md:ml-52 ">
+            <!--first card-->
+            <div class="flex flex-col items-center md:w-3/12 cursor-pointer">
+                <div class="bg-transparent overflow-hidden  w-full relative h-40 pb-36">
+                    <img src="https://weareultraviolet.org/wp-content/uploads/2019/12/keep-abortion-legal-scaled-380x240.jpg" class="absolute h-full w-full object-cover object-center rounded-t-lg bg-cblue" alt="" />
+                </div>
+                <div class="z-10  w-full">
+                    <div class="bg-white rounded-b-lg shadow-2xl  py-5 px-5">
+                        <span class="text-white font-roboto absolute text-3xl p-2 rounded-sm -mt-10 md:-ml-10 -ml-8 bg-cgreen">Daily Dose of Econ</span>
+                        <div class="flex items-center justify-between mt-8">
+                            <div class=" text-gray-600 font-light">The spring rains had softened the ground so dunk had no trouble...</div>
+                            <div class="text-2xl text-red-600 font-bold"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--second card-->
+            <div class="flex flex-col items-center md:w-3/12 cursor-pointer">
+                <div class="bg-transparent overflow-hidden  w-full relative h-40 pb-36">
+                    <img src="https://weareultraviolet.org/wp-content/uploads/2020/04/WDM-1-copy-225x140.jpg" class="absolute h-full w-full object-cover object-center rounded-t-lg" alt="" />
+                </div>
+                <div class=" z-10  w-full">
+                    <div class="bg-white rounded-b-lg shadow-2xl  py-5 px-5">
+                        <span class="text-white font-roboto absolute text-3xl p-2 rounded-sm -mt-10 md:-ml-10 -ml-8 bg-cgreen">Economics</span>
+                        <div class="flex items-center justify-between mt-8">
+                            <div class=" text-gray-600 font-light">The spring rains had softened the ground so dunk had no trouble...</div>
+                            <div class="text-2xl text-red-600 font-bold"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--third card-->
+            <div class="flex flex-col items-center md:w-3/12 cursor-pointer">
+                <div class="bg-cblue rounded-t-lg overflow-hidden  w-full relative h-40 pb-36">
+                    <img src="https://weareultraviolet.org/wp-content/uploads/2020/03/Biden_Warren_Harris-380x240.jpg" class="absolute h-full w-full object-cover object-center" alt="" />
+                </div>
+                <div class=" z-10  w-full">
+                    <div class="bg-white shadow-2xl  py-5 px-5 rounded-b-lg">
+                        <span class="text-white font-roboto absolute text-3xl p-2 rounded-sm -mt-10 md:-ml-10 -ml-8 bg-cgreen">They Are Friends</span>
+                        <div class="flex items-center justify-between mt-8">
+                            <div class=" text-gray-600 font-light">The spring rains had softened the ground so dunk had no trouble...</div>
+                            <div class="text-2xl text-red-600 font-bold"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--content panel end-->
+
+
+        <!--video start-->
+        <div id="video" class="observerTrigger"></div>
+        <div class="flex flex-col md:flex-col mt-28 md:ml-48 m-md:space-y-6">
+            <div id="video-container" class="md:w-1/2 rounded my-auto hidden">
+                <video width="640" height="240" class="rounded-lg h-72" controls>
+                    <source src="{{program.video_path|safe}}" type="video/mp4">
+                  Your browser
+            </div>
+            <div id="testimonial" class="md:w-2/3 mx-auto rounded-lg overflow-hidden relative mx-4 bg-cblue-light ring-4 ring-offset-4 ring-gray-300">
+                <h1 class="text-cblue-dark font-bebas font-light text-6xl mt-4 mx-4">Testimonial</h1>
+                <p class="text-lg font-roboto  px-6">{{program.testimonial}}</p>
+                <div class="justify-items-right text-right pt-2">
+                    <span class="text-xl font-roboto text-cblue-dark  text-right px-16"></span>
+                </div>
+            </div>
+        </div>
+
+        <!--faq start-->
+        <div id='faq' class="observerTrigger"></div>
+        <div id='faq-container' class="md:ml-48 mt-12 content-center" >
+            <h1 class="text-6xl font-bebas text-center pt-12">Frequently Asked Questions</h1>
+            {% for qa in faq %}
+            <div>
+                
+                
+                {% comment %} <h1 class="text-4xl font-bebas text-left px-16 cursor-pointer" @click="firstQOpen = !firstQOpen" ></h1> {% endcomment %}
+                <div class="flex flex-row mt-10 pl-12">
+                    <i class="fas fa-plus text-3xl text-cgreen pr-2"></i>
+                     <h1 class="font-roboto text-3xl  font-bold">{{qa.question}}</h1>
+                </div>
+                <p class="text-xl font-roboto text-left pl-3 md:pl-32 mt-4" >{{qa.answer|safe}}</p>
+                
+            </div>
+            {% endfor %}
+        </div>
+        <!--faq end-->
+
+        <!--more programs start-->
+        <div class="md:ml-48  md:w-5/6 bg-cblue rounded-lg mt-32 hidden">
+            <h1 class="text-6xl font-bebas text-white text-center py-6">More CCEE Programs</h1>
+            <div class="flex flex-col md:flex-row z-10 relative mx-8 md:space-x-8">
+                
+                
+                
+                <div @click="window.location.href='{{first_program.name}}'" class="cursor-pointer rounded w-full lg:w-1/3 p-4 lg:p-0 ">
+                    <img  src="{{first_program.photo_path.url}}" class="object-cover relative rounded -z-1 h-64" alt="technology" />
+                    <div  class="relative p-4 pl-0 z-20">
+                        
+                        <h2 class="-ml-4 mr-6 md:-ml-6 z-20 text-2xl bg-cgreen rounded text-gray-800  p-2 px-2 -mt-24 font-bebas overflow-hidden overflow-clip">
+                            <span class="text-white bg-cgreen">
+                                {{first_program.name}}
+                            <span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div @click="window.location.href='{{second_program.name}}'" class="cursor-pointer rounded w-full lg:w-1/3 p-4 lg:p-0 ">
+                    <img  src="{{second_program.photo_path.url}}" class="object-cover relative rounded -z-1 h-64" alt="technology" />
+                    <div  class="relative p-4 pl-0 z-20">
+                        
+                        <h2 class="-ml-4 mr-6 md:-ml-6 z-20 text-2xl bg-cgreen rounded text-gray-800  p-2 px-2 -mt-24 font-bebas overflow-hidden overflow-clip">
+                            <span class="text-white bg-cgreen">
+                                {{second_program.name}}
+                            <span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div @click="window.location.href='{{third_program.name}}'" class="cursor-pointer rounded w-full lg:w-1/3 p-4 lg:p-0 ">
+                    <img  src="{{third_program.photo_path.url}}" class="object-cover relative rounded -z-1 h-64" alt="technology" />
+                    <div  class="relative p-4 pl-0 z-20">
+                        
+                        <h2 class="-ml-4 mr-6 md:-ml-6 z-20 text-2xl bg-cgreen rounded text-gray-800  p-2 px-2 -mt-24 font-bebas overflow-hidden overflow-clip">
+                            <span class="text-white bg-cgreen">
+                                {{third_program.name}}
+                            <span>
+                        </h2>
+                    </div>
+                </div>
+                
+
+
+            
+
+            </div>
+
+            <div id="supporters" class=" observerTrigger"></div>
+        </div>
+        <!--more programs end-->
+        
+        <div class="font-roboto m-md:text-lg md:text-3xl text-center md:ml-48 mt-16">
+            These supporters have made it possible for California's teachers and students to create opportunity for generations through programs like this
+        </div>
+        <div class="flex flex-col md:flex-row md:ml-48 md:space-x-4 h">
+            <div class="flex justify-center p-2">
+                <img src="https://ccee-bucket-compressed.s3.amazonaws.com/media/programs/U_S_Bank_logo_logotype_emblem-260x70.jpg" class="max-h-28 object-contain object-center rounded " alt="" />
+            </div >
+            <div class="flex justify-center md:w-1/3 p-2">
+                <img src="https://ccee-bucket-compressed.s3.amazonaws.com/media/programs/NIEA-logo-RED-NEG_1.png" class="max-h-28 object-contain object-center rounded " alt="" />
+            </div>
+            <div class="flex justify-center p-2">
+                <img src="https://ccee-bucket-compressed.s3.amazonaws.com/media/programs/bank_of_america_logo_a-272x32_VOcon5J.png" class="max-h-28 object-contain object-center rounded " alt="" />
+                
+            </div>
+        </div>
+
+        <div id="action" class=" observerTrigger"></div>
+        <div class="md:ml-48 flex flex-col md:flex-row justify-center m-md:space-y-2 md:space-x-2 text-xl my-12">
+            <a href="/donate" class="px-10 py-4 border-8 border-cblue bg-cblue hover:border-cblue-dark hover:bg-cblue-dark rounded-lg text-white text-center font-roboto">Support {{program.name}} today!</a>
+            <a href="/volunteer" class="px-10 py-4 border-8 border-cgreen hover:border-cgreen-dark hover:bg-cgreen hover:text-white rounded-lg text-cgreen text-center font-roboto">Get involved with CCEE</a>
+        </div>
+
+        <div class="hidden md:ml-48 bg-blue px-6 py-4 bg-cblue mt-16 flex flex-col items-center">
+            <h1 class="text-white text-4xl font-bebas mt-8">Stay updated on all things CCEE</h1>
+            <input class="md:w-2/3 w-full m-8 p-2 font-roboto text-xl" placeholder="example@gmail.com"></input>
+        </div>
+
+        <!-- Begin Mailchimp Inline Form Code -->
+        
+        <div id="mc_embed_shell" class="mx-auto md:w-2/3 w-full">
+            <h3 class="text-5xl font-bebas text-cblue m-md:text-center pt-6 px-6 md:-mb-4 md:ml-20">Stay up to date on all things CCEE</h3>
+
+            <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+            <style type="text/css">
+                  #mc_embed_signup{background:#0071BC; border-radius: 15px; clear:left; font:20px Bebas Neue,Arial,sans-serif;}
+                  label[for="mce-EMAIL"]{color:white; }
+                  #mc_embed_signup .button{background-color: #88c23d; font:25px}
+                  #mc_embed_signup .button:hover{background-color: #588527}
+                  /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+                    We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+            </style>
+            <div id="mc_embed_signup" class="md:w-32 md:ml-20">
+                <form action="https://ccee.us8.list-manage.com/subscribe/post?u=dd6d6b512296197b406ecdf9b&amp;id=231c580056&amp;f_id=008667e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                    <div id="mc_embed_signup_scroll" class="p-4">
+                        <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
+                    <div id="mce-responses" class="clear foot">
+                        <div class="response" id="mce-error-response" style="display: none;"></div>
+                        <div class="response" id="mce-success-response" style="display: none;"></div>
+                    </div>
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                    <input type="text" name="b_dd6d6b512296197b406ecdf9b_231c580056" tabindex="-1" value="">
+                </div>
+                    <div class="optionalParent">
+                        <div class="clear foot">
+                            <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button font-xl" value="Subscribe">
+                        </div>
+                    </div>
+                </div>
+            </form>
+          </div>
+        </div>
+        <!-- End Mailchimp Inline Form Code -->
+        </div>
+    </div>
+    {% include "polls/footer.html"%}
+</body>
+
+<!-- Begin Constant Contact Active Forms -->
+<script> var _ctct_m = "7c85ca4a273adbb5078e387bee3b7a09"; </script>
+<script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
+<!-- End Constant Contact Active Forms -->
+
+<script>
+    
+
+    var showHtmlContent = '{{program.show_html_content}}'
+    var showTestimonial = '{{program.show_testimonial}}'
+    var showVideo = '{{program.show_video}}'
+    var showFaq = '{{program.show_faq}}'
+
+    
+
+    if (showVideo === 'True')
+    {
+        document.getElementById('video-container').style.display = '';
+    }
+    else
+    {
+        document.getElementById('video-container').style.display = 'none';
+        document.getElementById('bg-stripe').style.display = 'none';
+    }
+
+    if (showFaq === 'True')
+    {
+        document.getElementById('faq-container').style.display = '';
+    }
+    else
+    {
+        document.getElementById('faq-container').style.display = 'none';
+    }
+
+    if (showHtmlContent === 'True')
+    {
+        document.getElementById('html_content').style.display = '';
+    }
+    else
+    {
+        document.getElementById('html_content').style.display = 'none';
+    }
+
+    if (showTestimonial === 'True')
+    {
+        document.getElementById('testimonial').style.display = '';
+    }
+    else
+    {
+        document.getElementById('testimonial').style.display = 'none';
+    }
+
+    function programData() {
+
+        // var faqHighlight = false;
+        // var observer = new IntersectionObserver(function(entries) {
+        //     // isIntersecting is true when element and viewport are overlapping
+        //     // isIntersecting is false when element and viewport don't overlap
+        //     if(entries[0].isIntersecting === true)
+        //     {
+        //         this.faqHighlight = true;
+        //         console.log('Element has just become visible in screen');
+        //     }
+                
+        // }, { threshold: [0] });
+
+        // observer.observe(document.querySelector("#faq"));
+        return {
+            highlighted: {},
+            observe() {
+                var observer = new IntersectionObserver(entries => {
+                    // isIntersecting is true when element and viewport are overlapping
+                    // isIntersecting is false when element and viewport don't overlap
+                    if(entries[0].isIntersecting === true)
+                    {
+                        this.highlighted[entries[0].target.id + '-marker'] = true;
+                    }
+                    else {
+                        this.highlighted[entries[0].target.id + '-marker'] = false;
+                    }                                   
+                }, { threshold: [0] });
+
+                document.querySelectorAll(".observerTrigger").forEach((element) => observer.observe(element))                
+            },
+            firstQOpen: false,
+            secondQOpen: false,
+            thirdQOpen: false,
+            scrollTo(position)
+            {
+                var elmnt = document.getElementById(position);
+                elmnt.scrollIntoView(); 
+            }
+
+
+        }
+    }
+
+</script>

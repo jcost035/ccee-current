@@ -1,0 +1,846 @@
+<head>
+  {% load static %}
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9H967QXNHX"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9H967QXNHX');
+  </script>
+
+  <link href="{% static "site.css" %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+</head>
+
+<style>
+  #header {
+    font-family: 'Bebas Neue', cursive;
+    color: #ffffff;
+  }
+  #camp-text {
+    font-family: 'Roboto Condensed', sans-serif;
+    
+    color: #ffffff;
+  }
+   #button {
+    border-color: #0071BC;
+  }
+  #button:hover {
+    background-color: #0071BC;
+    
+  }
+  #ccee-color {
+    background-color: #88c23d;
+  }
+  #ccee-blue {
+    background-color: #0071BC;
+  } 
+  #card-background {
+    margin-top: 545px;
+    z-index: -1;
+    height:
+    575px;
+    
+  }
+
+  * {box-sizing:border-box}
+
+  /* Slideshow container */
+  .slideshow-container {
+    position: relative;
+    margin: auto;
+  }
+
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.8);
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* Caption text */
+  .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+
+  @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+</style>
+
+<script>
+  
+  function data() {
+    return {
+      open: false,
+      ourteamOpen : false,
+      centersOpen : false,
+      bodOpen : false,
+      dapOpen : false,
+      arOpen : false,
+      atTop : true,
+      popupOpen : false,
+      whatwedoOpen : false,
+      menuClear(openMenu) {
+        if(openMenu == 'ourteamOpen')
+        {
+          this.ourteamOpen = true
+        }
+        else
+        {
+          this.ourteamOpen = false
+        }
+
+        if(openMenu == 'centersOpen')
+        {
+          this.centersOpen = true
+        }
+        else
+        {
+          this.centersOpen = false
+        }
+
+        if(openMenu == 'bodOpen')
+        {
+          this.bodOpen = true
+        }
+        else
+        {
+          this.bodOpen = false
+        }
+
+        if(openMenu == 'dapOpen')
+        {
+          this.dapOpen = true
+        }
+        else
+        {
+          this.dapOpen = false
+        }
+
+        if(openMenu == 'arOpen')
+        {
+          this.arOpen = true
+        }
+        else
+        {
+          this.arOpen = false
+        }
+        
+      },
+      
+      clearsubmenus()
+      {
+        this.ourteamOpen = false
+        this.centersOpen = false
+        this.bodOpen = false
+        this.dapOpen = false
+        this.arOpen = false
+      }
+    }
+  }
+</script>
+
+<script>
+  function popupData() {
+      return {
+        popupOpen : false
+      }
+  }
+</script>
+
+<script>
+  function panelData() {
+      return {
+        firstpanelOpen : true,
+        secondpanelOpen : false,
+        thirdpanelOpen : false,
+        secondpanelText : false,
+        thirdpanelText : false,
+      }
+  }
+</script>
+
+
+
+
+<!--
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+-->
+
+
+<!-- main post -->
+
+<div class=" mx-auto">
+  
+  <main class=" ">
+    
+      {% include "polls/nav.html" %}
+      
+
+      <!-- Slideshow container -->
+      <div class="slideshow-container hidden">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+          {% include 'polls/econ-ed-banner-2023.html'%}
+        </div>
+
+        <div class="mySlides fade">
+          {% include 'polls/advisor-banner.html'%}
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <br>
+
+      <!-- The dots/circles -->
+      <div style="text-align:center" class="hidden">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+      </div> 
+
+      <!--featured content-->
+      <div x-data="panelData()" class="pt-24 w-full max-w-screen-xl md:px-16 mx-auto">
+        
+        <div class="flex flex-col md:flex-row justify-center ">
+          <button @click="firstpanelOpen=true, secondpanelOpen=false, thirdpanelOpen=false" 
+            type="button" 
+            x-bind:class='{"text-cgray border-cgray shadow-none": !firstpanelOpen }'
+            class="md:py-4 m-md:mx-auto m-md:w-11/12 rounded text-lg md:w-3/12 m-md:py-2 m-md:my-2 font-semibold ml-6  mt-0 btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-cblue hover:border-cblue  border-2 border-cblue text-cblue shadow-2xl font-normal  px-6"
+          >
+              I'm a K-12 Educator 
+          </button>
+
+          <button @click="secondpanelOpen=true, firstpanelOpen=false, thirdpanelOpen=false" 
+            type="button" 
+            x-bind:class='{"text-cgray border-cgray shadow-none": !secondpanelOpen }'
+            class="md:py-4 m-md:mx-auto m-md:w-11/12 rounded text-lg md:w-3/12 m-md:py-2 m-md:my-2 font-semibold ml-6  mt-0 btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-cblue hover:border-cblue  border-2 border-cblue text-cblue shadow-2xl font-normal  px-6"
+          >
+              I'm a Community Member
+          </button>
+
+          <button @click="thirdpanelOpen=true, firstpanelOpen=false, secondpanelOpen=false" 
+            type="button" 
+            x-bind:class='{"text-cgray border-cgray shadow-none": !thirdpanelOpen }'
+            class="md:py-4 m-md:mx-auto m-md:w-11/12 rounded text-lg md:w-3/12 m-md:py-2 m-md:my-2 font-semibold ml-6  mt-0 btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:text-cblue hover:border-cblue  border-2 border-cblue text-cblue shadow-2xl font-normal  px-6"
+          >
+              I’m an Advocate
+          </button>
+        </div>
+        
+        <!--First panel-->
+        <div x-show="firstpanelOpen" class="flex flex-col md:flex-row w-full mt-8 space-x-1 m-md:space-y-6 m-md:justify-center">
+          <!--first card-->
+          <div 
+            class="flex-grow items-center md:w-1/2  cursor-pointer "
+          >
+            
+            <div
+              class="bg-white overflow-hidden w-full relative md:h-72 h-2/3 m-md:w-11/12 pb-12 md:pb-36 rounded-lg flex flex-col mx-auto"
+            >
+              <span id="camp-text" style="z-index: 2;" class="absolute bg-cblue text-3xl p-2 rounded-lg h-full w-full opacity-100"></span>
+              <img
+                src=""
+                class="absolute h-full w-full object-cover object-center"
+                alt=""
+                style="z-index: 1;"
+              />
+              <span id="camp-text" style="z-index: 3;" class="md:absolute text-gray-800 text-3xl p-2 rounded-lg pt-6 pl-8">
+                Attend Professional Development Sessions
+                <i class="fas fa-angle-right"></i>
+              </span>
+              <span 
+                style="font-family: 'Roboto', sans-serif;"
+                class="md:absolute  w-full z-10 text-white px-8 md:mt-24"
+              >Whether you’re just starting, or you’ve been teaching for years, there’s a CCEE program that will fit every educator's needs!</span>
+
+              <button @click="window.location.href='k12-programs'"
+                type="button" 
+                class="md:absolute rounded text-xl w-3/6 h-1/6 font-semibold ml-8 m-md:mt-6 m-md:mb-2 md:mt-44 btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:bg-white hover:text-cblue-dark border-2 border-white text-white font-normal px-4 z-40"
+              >
+                  Learn More
+              </button>
+              
+            </div>
+            
+          </div>
+          <!--second card-->
+          <div 
+            @click="window.location.href='student-programs'"
+            @mouseover="secondpanelText = true"
+            @mouseover.away="secondpanelText = false"
+            class="flex-grow flex flex-col items-center md:w-1/3  cursor-pointer "
+          >
+            
+            <div
+              class="bg-white overflow-hidden w-full relative h-72 m-md:pb-2 md:pb-36 rounded-lg m-md:flex m-md:flex-col m-md:w-11/12 m-md:w-11/12"
+            >
+              <span id="camp-text" style="z-index: 2;" class="absolute bg-gradient-to-b from-black to-gray-500 text-3xl p-2 rounded-lg h-full w-full opacity-50" 
+                x-bind:class='{"opacity-70": secondpanelText }'
+              ></span>
+              <img
+                src="{% static 'index/CREATE Conf_2016 272.jpg' %}"
+                class="absolute h-full w-full object-cover object-center"
+                alt=""
+                style="z-index: 1;"
+              />
+              <span id="camp-text" style="z-index: 3;" class="md:absolute text-gray-800 text-3xl  rounded-lg pt-6 ml-8">
+                Student Contests
+                <i class="fas fa-angle-right"></i>
+              </span>
+              <div 
+              style="font-family: 'Roboto', sans-serif;"
+              x-bind:class='{ "pt-4 md:text-opacity-100": secondpanelText  }'
+              class="md:absolute m-md:block m-md:py-4 transition-all ease-in-out w-full z-10 text-white px-8 md:mt-16 md:text-opacity-0"
+              >
+                Win cash prizes and empower your students to succeed through our hands-on, experiential learning competitions.
+              </div>
+              
+            </div>
+            
+          </div>
+          <!--third card-->
+          <div 
+            @mouseover="thirdpanelText = true"
+            @mouseover.away="thirdpanelText = false"
+            class="hidden flex-grow flex flex-col items-center md:w-1/3  cursor-pointer"
+          >
+            
+            <div
+              class="bg-white overflow-hidden w-full relative h-72 m-md:pb-2 md:pb-36 rounded-lg m-md:flex m-md:flex-col m-md:w-11/12 m-md:w-11/12"
+            >
+              <span id="camp-text" style="z-index: 2;" class="absolute bg-gradient-to-b from-black to-gray-500 text-3xl p-2 rounded-lg h-full w-full opacity-50" 
+                x-bind:class='{"opacity-70": thirdpanelText }'
+              ></span>
+              <img
+                src="{% static 'index/brotherhood cru.jpg' %}"
+                class="absolute h-full w-full object-cover object-center"
+                alt=""
+                style="z-index: 1;"
+              />
+              <span id="camp-text" style="z-index: 3;" class="md:absolute text-gray-800 text-3xl  rounded-lg pt-6 ml-8">
+                Daily Dose of Econ
+                <i class="fas fa-angle-right"></i>
+              </span>
+              <div 
+              style="font-family: 'Roboto', sans-serif;"
+              x-bind:class='{ "pt-4 md:text-opacity-100": thirdpanelText  }'
+              class="md:absolute m-md:block m-md:py-4 transition-all ease-in-out w-full z-10 text-white px-8 md:mt-16 md:text-opacity-0"
+              >
+                Daily resources to bring economics to life in your classroom!
+              </div>
+              
+            </div>
+            
+          </div>
+        </div>
+        <!--First panel end-->
+
+        <!--Second panel-->
+        <div x-show="secondpanelOpen" class="flex flex-col md:flex-row w-full mt-8 space-x-1 m-md:space-y-6 m-md:justify-center">
+          <!--first card-->
+          <div 
+            class="flex-grow items-center md:w-1/2  cursor-pointer "
+          >
+            
+            <div
+              class="bg-white overflow-hidden w-full relative md:h-72 h-2/3 m-md:w-11/12 pb-12 md:pb-36 rounded-lg flex flex-col mx-auto"
+            >
+              <span id="camp-text" style="z-index: 2;" class="absolute bg-cgreen-dark text-3xl p-2 rounded-lg h-full w-full opacity-100"></span>
+              <img
+                src="https://weareultraviolet.org/wp-content/uploads/2019/12/keep-abortion-legal-scaled-380x240.jpg"
+                class="absolute h-full w-full object-cover object-center"
+                alt=""
+                style="z-index: 1;"
+              />
+              <span id="camp-text" style="z-index: 3;" class="md:absolute text-gray-800 text-3xl p-2 rounded-lg pt-6 pl-8">
+                Join a Family Financial Literacy Event!
+                <i class="fas fa-angle-right"></i>
+              </span>
+              <span 
+                style="font-family: 'Roboto', sans-serif;"
+                class="md:absolute  w-full z-10 text-white px-8 md:mt-24"
+              >
+                Come together for a fun event to learn about making good personal finance decisions, why money matters, and how you can make it work for YOU!
+              </span>
+
+              <button  @click="window.location.href='/programs/Family Financial Literacy Event'" 
+                type="button" 
+                
+                class="md:absolute rounded text-xl w-3/6 h-1/6 font-semibold ml-8 m-md:mt-6 m-md:mb-2 md:mt-44 btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:bg-white hover:text-cblue-dark border-2 border-white text-white font-normal px-4 z-40"
+              >
+                  Learn More
+              </button>
+              
+            </div>
+            
+          </div>
+          <!--second card-->
+          <div 
+            @mouseover="secondpanelText = true"
+            @mouseover.away="secondpanelText = false"
+            class="hidden flex-grow flex flex-col items-center md:w-1/3  cursor-pointer"
+          >
+            
+            <div
+              class="bg-white overflow-hidden w-full relative h-72 m-md:pb-2 md:pb-36 rounded-lg m-md:flex m-md:flex-col m-md:w-11/12 m-md:w-11/12"
+            >
+              <span id="camp-text" style="z-index: 2;" class="absolute bg-gradient-to-b from-black to-gray-500 text-3xl p-2 rounded-lg h-full w-full opacity-50" 
+                x-bind:class='{"opacity-70": secondpanelText }'
+              ></span>
+              <img
+                src=""
+                class="absolute h-full w-full object-cover object-center"
+                alt=""
+                style="z-index: 1;"
+              />
+              <span id="camp-text" style="z-index: 3;" class="md:absolute text-gray-800 text-3xl  rounded-lg pt-6 ml-8 mr-4">
+                Learn about out Black, Indigenous, People of Color (BIPOC) Economic Equity Initiative 
+                <i class="fas fa-angle-right"></i>
+              </span>
+              <div 
+              style="font-family: 'Roboto', sans-serif;"
+              x-bind:class='{ "pt-4 md:text-opacity-100": secondpanelText  }'
+              class="md:absolute m-md:block m-md:py-4 transition-all ease-in-out w-full z-10 text-white px-8 md:mt-16 md:text-opacity-0"
+              >
+                
+              </div>
+              
+            </div>
+            
+          </div>
+          <!--third card-->
+          <div 
+            @click="window.location.href='history-mission'"
+            @mouseover="thirdpanelText = true"
+            @mouseover.away="thirdpanelText = false"
+            class="flex-grow flex flex-col items-center md:w-1/3  cursor-pointer"
+          >
+            
+            <div
+              class="bg-white overflow-hidden w-full relative h-72 m-md:pb-2 md:pb-36 rounded-lg m-md:flex m-md:flex-col m-md:w-11/12 m-md:w-11/12"
+            >
+              <span id="camp-text" style="z-index: 2;" class="absolute bg-gradient-to-b from-black to-gray-500 text-3xl p-2 rounded-lg h-full w-full opacity-50" 
+                x-bind:class='{"opacity-70": thirdpanelText }'
+              ></span>
+              <img
+                src="{% static 'index/CCEE_Luis_4-2016 55.jpg' %}"
+                class="absolute h-full w-full object-cover object-center"
+                alt=""
+                style="z-index: 1;"
+              />
+              <span id="camp-text" style="z-index: 3;" class="md:absolute text-gray-800 text-3xl  rounded-lg pt-6 ml-8 mr-4">
+                Learn more about CCEE
+                <i class="fas fa-angle-right"></i>
+              </span>
+              <div 
+              style="font-family: 'Roboto', sans-serif;"
+              x-bind:class='{ "pt-4 md:text-opacity-100": thirdpanelText  }'
+              class="md:absolute m-md:block m-md:py-4 transition-all ease-in-out w-full z-10 text-white px-8 md:mt-24 md:text-opacity-0"
+              >
+                Find out how we’re building a brighter future for California, one classroom at a time.
+              </div>
+              
+            </div>
+            
+          </div>
+        </div>
+        <!--Second panel end-->
+
+        <!--Third panel-->
+        <div x-show="thirdpanelOpen" class="flex flex-col md:flex-row w-full mt-8 space-x-1 m-md:space-y-6 m-md:justify-center">
+          <!--first card-->
+          <div 
+            class="flex-grow items-center md:w-1/2  cursor-pointer "
+          >
+            
+            <div
+              class="bg-white overflow-hidden w-full relative md:h-72 h-2/3 m-md:w-11/12 pb-12 md:pb-36 rounded-lg flex flex-col mx-auto"
+            >
+              <span id="camp-text" style="z-index: 2;" class="absolute bg-cblue-dark text-3xl p-2 rounded-lg h-full w-full opacity-100"></span>
+              <img
+                src="https://weareultraviolet.org/wp-content/uploads/2019/12/keep-abortion-legal-scaled-380x240.jpg"
+                class="absolute h-full w-full object-cover object-center"
+                alt=""
+                style="z-index: 1;"
+              />
+              <span id="camp-text" style="z-index: 3;" class="md:absolute text-gray-800 text-3xl p-2 rounded-lg pt-6 pl-8">
+                Support CCEE’s Work 
+                <i class="fas fa-angle-right"></i>
+              </span>
+              <span 
+                style="font-family: 'Roboto', sans-serif;"
+                class="md:absolute  w-full z-10 text-white px-8 md:mt-24"
+              >
+                Help us build intergenerational mobility by empowering K-12 educators to teach economics and personal finance education in California’s schools 
+              </span>
+
+              <button @click="window.location.href='/donate'"
+                type="button" 
+                class="md:absolute rounded text-xl w-3/6 h-1/6 font-semibold ml-8 m-md:mt-6 m-md:mb-2 md:mt-44 btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:bg-white hover:text-cblue-dark border-2 border-white text-white font-normal px-4 z-40"
+              >
+                  Learn More
+              </button >
+              
+            </div>
+            
+          </div>
+          <!--second card-->
+          <div 
+            @click="window.location.href='/programs/Family Financial Literacy Event'"
+            @mouseover="secondpanelText = true"
+            @mouseover.away="secondpanelText = false"
+            class="flex-grow flex flex-col items-center md:w-1/3  cursor-pointer"
+          >
+            
+            <div
+              class="bg-white overflow-hidden w-full relative h-72 m-md:pb-2 md:pb-36 rounded-lg m-md:flex m-md:flex-col m-md:w-11/12 m-md:w-11/12"
+            >
+              <span id="camp-text" style="z-index: 2;" class="absolute bg-gradient-to-b from-black to-gray-500 text-3xl p-2 rounded-lg h-full w-full opacity-50" 
+                x-bind:class='{"opacity-70": secondpanelText }'
+              ></span>
+              <img
+                src="{% static 'index/IMG_0588.JPG' %}"
+                class="absolute h-full w-full object-cover object-center"
+                alt=""
+                style="z-index: 1;"
+              />
+              <span id="camp-text" style="z-index: 3;" class="md:absolute text-gray-800 text-3xl  rounded-lg pt-6 ml-8 mr-3">
+                For 60 years, we’ve been dedicated to economics and financial literacy 
+                <i class="fas fa-angle-right"></i>
+              </span>
+              <div 
+              style="font-family: 'Roboto', sans-serif;"
+              x-bind:class='{ "pt-4 md:text-opacity-100": secondpanelText  }'
+              class="md:absolute m-md:block m-md:py-4 transition-all ease-in-out w-full z-10 text-white px-8 md:mt-40 md:text-opacity-0"
+              >
+                Learn more about CCEE & how we’re supporting California’s educators to empower their students 
+              </div>
+              
+            </div>
+            
+          </div>
+          <!--third card-->
+          <div 
+            @click="window.location.href='/contact'"
+            @mouseover="thirdpanelText = true"
+            @mouseover.away="thirdpanelText = false"
+            class="flex-grow flex flex-col items-center md:w-1/3  cursor-pointer"
+          >
+            
+            <div
+              class="bg-white overflow-hidden w-full relative h-72 m-md:pb-2 md:pb-36 rounded-lg m-md:flex m-md:flex-col m-md:w-11/12 m-md:w-11/12"
+            >
+              <span id="camp-text" style="z-index: 2;" class="absolute bg-gradient-to-b from-black to-gray-500 text-3xl p-2 rounded-lg h-full w-full opacity-50" 
+                x-bind:class='{"opacity-70": thirdpanelText }'
+              ></span>
+              <img
+                src="{% static 'index/CREATE Conf_2016 404.jpg' %}"
+                class="absolute h-full w-full object-cover object-center"
+                alt=""
+                style="z-index: 1;"
+              />
+              <span id="camp-text" style="z-index: 3;" class="md:absolute text-gray-800 text-3xl  rounded-lg pt-6 ml-8 mr-8">
+                I want to bring K-12 economics and personal finance education to my school 
+                <i class="fas fa-angle-right"></i>
+              </span>
+              <div 
+              style="font-family: 'Roboto', sans-serif;"
+              x-bind:class='{ "pt-4 md:text-opacity-100": thirdpanelText  }'
+              class="md:absolute m-md:block m-md:py-4 transition-all ease-in-out w-full z-10 text-white px-8 md:mt-48 md:text-opacity-0"
+              >
+                Let’s work together to make it happen! 
+              </div>
+              
+            </div>
+            
+          </div>
+        </div>
+        <!--Third panel end-->
+        
+      </div>
+    
+
+      <div class="flex flex-col mt-6 space-y-4 mx-auto w-11/12 md:px-20 text-center">
+        <h3 class="text-5xl font-bebas text-cblue m-md:text-center pt-6 px-6 md:-mb-4">Stay up to date on all things CCEE</h3>
+        <div id="mc_embed_shell" class="mx-auto md:w-2/3 w-full">
+          <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+          <style type="text/css">
+                #mc_embed_signup{background:#0071BC; border-radius: 15px; clear:left; font:20px Bebas Neue,Arial,sans-serif;}
+                label[for="mce-EMAIL"]{color:white; }
+                #mc_embed_signup .button{background-color: #88c23d; font:25px}
+                #mc_embed_signup .button:hover{background-color: #588527}
+                /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+                  We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+          </style>
+          <div id="mc_embed_signup" class="md:w-32">
+              <form action="https://ccee.us8.list-manage.com/subscribe/post?u=dd6d6b512296197b406ecdf9b&amp;id=231c580056&amp;f_id=008667e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                  <div id="mc_embed_signup_scroll" class="p-4">
+                      <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
+                  <div id="mce-responses" class="clear foot">
+                      <div class="response" id="mce-error-response" style="display: none;"></div>
+                      <div class="response" id="mce-success-response" style="display: none;"></div>
+                  </div>
+              <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                  /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                  <input type="text" name="b_dd6d6b512296197b406ecdf9b_231c580056" tabindex="-1" value="">
+              </div>
+                  <div class="optionalParent">
+                      <div class="clear foot">
+                          <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button font-xl" value="Subscribe">
+                      </div>
+                  </div>
+              </div>
+          </form>
+        </div>
+        <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[2]='LNAME';ftypes[2]='text';fnames[1]='FNAME';ftypes[1]='text';fnames[13]='TITLE1';ftypes[13]='radio';fnames[17]='TWITTER';ftypes[17]='text';fnames[16]='CITY';ftypes[16]='text';fnames[14]='STATE';ftypes[14]='text';fnames[10]='MEDIATYPE';ftypes[10]='text';fnames[5]='OUTLET';ftypes[5]='text';fnames[15]='MMERGE15';ftypes[15]='radio';fnames[9]='MMERGE9';ftypes[9]='text';fnames[12]='MMERGE12';ftypes[12]='text';fnames[8]='GRADEBAND';ftypes[8]='text';fnames[7]='DISTRICT';ftypes[7]='text';fnames[6]='SCHOOLNAME';ftypes[6]='text';fnames[4]='PHONE';ftypes[4]='phone';fnames[3]='ADDRESS';ftypes[3]='address';fnames[11]='MMERGE11';ftypes[11]='text';fnames[18]='TITLE';ftypes[18]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
+        
+      </div>
+
+
+      
+
+    </main>
+    <!-- main ends here -->
+
+    
+    
+    
+    {% include "polls/footer.html"%}
+  </div>
+
+  <script>
+
+    function loadEvents()
+            {
+              
+                return {
+                    events: [],
+                    fetchEvents() {
+                        this.events = []
+                        fetch('/news_list')
+                            .then(response => response.json())
+                            .then(data => {
+                                //console.log(data)
+                                this.events.push(...data)
+                            });
+                    },
+                    fetchEventsByDay(days) {
+                        this.events = []
+                        
+                        fetch('/news_list_date/' + days)
+                            .then(response => response.json())
+                            .then(data => {
+                                //console.log(data)
+                                this.events.push(...data)
+                            });
+                    },
+                    
+                    search: "",
+                    locationSearch: "",
+                    tagSearch: "",
+                    calendarView: false,
+                    mobileOpen: false, 
+                    topicOpen: false, 
+                    locationOpen: false, 
+                    dateOpen: false,
+                    tagLabel() {
+                        if(this.tagSearch == "")
+                        {
+                            return "Any Audience"
+                        }
+                        else
+                        {
+                            return this.tagSearch
+                        }
+                    },
+                    locationLabel() {
+                        if(this.locationSearch == "")
+                        {
+                            return "Any Location"
+                        }
+                        else
+                        {
+                            return this.locationSearch
+                        }
+                    },
+                    resetFilters() {
+                        this.tagSearch = ""
+                        this.locationSearch = ""
+                    },
+                    get filteredEvents()
+                    {
+                        
+                        console.log(this.events)
+                        return this.events.filter((item) => {
+                            return item.fields.tags
+                                        .toLowerCase()
+                                        .includes(this.tagSearch.toLowerCase())
+                                    && item.fields.location
+                                        .toLowerCase()
+                                        .includes(this.locationSearch.toLowerCase())
+                                    && item.fields.title
+                                        .toLowerCase()
+                                        .includes(this.search.toLowerCase());
+                        });
+                    }
+
+                }
+            }
+
+
+
+    // window.addEventListener( "load", function () {
+    //   function sendData() {
+    //     const XHR = new XMLHttpRequest();
+
+    //     // Bind the FormData object and the form element
+    //     const FD = new FormData(form);
+
+    //     FD.append("create_source", "Account");
+    //     console.log(FD);  
+    //     // Define what happens on successful data submission
+    //     XHR.addEventListener( "load", function(event) {
+    //       alert( event.target.responseText );
+    //     } );
+
+    //     // Define what happens in case of error
+    //     XHR.addEventListener( "error", function( event ) {
+    //       alert( 'Oops! Something went wrong.' );
+    //     } );
+
+    //     // Set up our request
+    //     XHR.open( "POST", "https://api.cc.email/v3/account/emails?api_key=65905886-48af-477f-b935-de5536f22764" );
+
+    //     // The data sent is what the user provided in the form
+    //     XHR.send( FD );
+    //   }
+
+    //   // Access the form element...
+    //   const form = document.getElementById("signup");
+
+    //   // ...and take over its submit event.
+    //   form.addEventListener( "submit", function ( event ) {
+    //     event.preventDefault();
+
+    //     sendData();
+    //   } );
+    // } );
+  </script>
+  
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+    } 
+  </script>
+
+  <!-- Begin Constant Contact Active Forms -->
+  <script> var _ctct_m = "7c85ca4a273adbb5078e387bee3b7a09"; </script>
+  <script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
+  <!-- End Constant Contact Active Forms -->

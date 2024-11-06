@@ -1,0 +1,210 @@
+<head>
+{% load static %}
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9H967QXNHX"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9H967QXNHX');
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link href="{% static "site.css" %}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+<script>
+  
+  function data() {
+    return {
+      open: false,
+      ourteamOpen : false,
+      centersOpen : false,
+      bodOpen : false,
+      dapOpen : false,
+      arOpen : false,
+      atTop : true,
+      popupOpen : false,
+      whatwedoOpen : false,
+      menuClear(openMenu) {
+        if(openMenu == 'ourteamOpen')
+        {
+          this.ourteamOpen = true
+        }
+        else
+        {
+          this.ourteamOpen = false
+        }
+
+        if(openMenu == 'centersOpen')
+        {
+          this.centersOpen = true
+        }
+        else
+        {
+          this.centersOpen = false
+        }
+
+        if(openMenu == 'bodOpen')
+        {
+          this.bodOpen = true
+        }
+        else
+        {
+          this.bodOpen = false
+        }
+
+        if(openMenu == 'dapOpen')
+        {
+          this.dapOpen = true
+        }
+        else
+        {
+          this.dapOpen = false
+        }
+
+        if(openMenu == 'arOpen')
+        {
+          this.arOpen = true
+        }
+        else
+        {
+          this.arOpen = false
+        }
+        
+      },
+      
+      clearsubmenus()
+      {
+        this.ourteamOpen = false
+        this.centersOpen = false
+        this.bodOpen = false
+        this.dapOpen = false
+        this.arOpen = false
+      }
+    }
+  }
+</script>
+
+<script>
+  function popupData() {
+      return {
+        popupOpen : false
+      }
+  }
+</script>
+
+<script>
+  function panelData() {
+      return {
+        firstpanelOpen : true,
+        secondpanelOpen : false,
+        thirdpanelOpen : false,
+        secondpanelText : false,
+        thirdpanelText : false,
+      }
+  }
+</script>
+
+</head>
+
+{% include "polls/nav.html"%}
+
+<div class="mx-auto flex flex-col max-w-screen-xl">
+    <div class="flex flex-col md:flex-row mt-40 ">
+
+      {% include 'polls/banner-nav.html'%}
+
+    <div class="md:w-1/2 m-md:text-center m-md:mt-12">
+        <h1 class="md:ml-16 m-md:p-4 text-9xl m-md:text-8xl mt-12 text-gradient bg-cblue" style="font-family: 'Bebas Neue', cursive;">Our Mission</h1>
+
+        <p class="mx-4 md:mx-16 text-lg md:-mr-2 font-roboto ">
+          To equip California students with the tools and knowledge of personal finance and economics so that they can make better decisions for themselves, their families, and their communities.
+        </p>
+
+        <h1 class="md:ml-16 m-md:p-4 text-7xl mt-12 text-gradient bg-cblue" style="font-family: 'Bebas Neue', cursive;">Our Vision</h1>
+        <p class="mx-4 my-4 md:mx-16 text-lg md:-mr-2 font-roboto"  >
+          Our work aims to create intergenerational opportunity so that every individual can have financial and economic security and realize their dreams and aspirations  
+        </p>
+        <p class="leading-loose"  >
+          
+        </p>
+    </div>
+</div>
+
+  
+
+    <div class="flex m-md:flex-col flex-row my-8 mt-16 md:mt-32">
+        <img class="rounded-full md:w-128" src="{% static 'mission/UCLA_Aerial_ca1953.jpeg' %}">
+        <div class="md:pl-12 m-md:text-center m-md:px-6 m-md:mt-8 self-center">
+            <h1 class="text-7xl m-md:text-5xl font-bold text-cblue" style="font-family: 'Bebas Neue', cursive;">How it all began</h1>
+            <p class="leading-loose m-md:text-center font-roboto text-xl"  >
+              In 1959, The California Council on Economic Education (CCEE) was founded as part of the California State University Foundation to provide training and  standards-based curriculum in economics to California teachers. In 1999, CCEE became  a 501 © 3 charitable organization. 
+            </p>
+        </div>
+    </div>
+
+    <div class="flex m-md:flex-col flex-row my-8">
+        <img class="md:hidden rounded md:w-128 px-2 md:px-4 mb-4" src="{% static 'programs/bill.png' %}">
+        <div class="md:pl-32 m-md:text-center m-md:px-6 m-md:mb-8 self-center">
+            <h1 class="text-6xl m-md:text-4xl font-bold text-cblue" style="font-family: 'Bebas Neue', cursive;">Championing economics in California’s K-12 schools since the beginning</h1>
+            <p class="leading-loose m-md:text-center font-roboto text-xl"  >
+              CCEE helped to pioneer the 1985 economics mandate in California, which is the law that requires every student to take a single economics course 
+            </p>
+        </div>
+        <img class="m-md:hidden rounded md:w-128 px-2 md:px-4" src="{% static 'programs/bill.png' %}">
+    </div>
+
+    <div class="flex m-md:flex-col flex-row my-8">
+        <img class="rounded-full md:w-128" src="{% static 'mission/Teacher in Classroom - CCEE.jpeg' %}">
+        <div class="md:pl-12 m-md:text-center m-md:px-6 m-md:mt-8 self-center">
+            <h1 class="text-7xl m-md:text-5xl font-bold text-cblue" style="font-family: 'Bebas Neue', cursive;">We’re part of a larger movement</h1>
+            <p class="leading-loose m-md:text-center font-roboto text-xl"  >
+              Despite California’s economics course mandate, there is still so much more work to be done within California in order to build widespread economic and financial literacy. We couldn’t do this work without <a href="/donors" class="text-cblue hover:text-cblue-light">our valuable partners.</a> 
+            </p>
+        </div>
+    </div>
+
+    <div class="text-center md:w-4/12 w-11/12 mx-auto mt-16 hidden">
+        <p >Need help overcoming these specific guidance and feedback challenges? We’ve got a suite of resources to help you get you started.</p>
+        <button type="button" id="button" class="hover:bg-cblue hover:text-white mt-4 rounded-lg font-semibold btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border-cblue border-2 bg-white hover-bg-blue-300  text-cblue font-normal py-2 px-6 ">
+            Learn More
+        </button>
+    </div>
+</div>
+
+<section class="bg-gray-100 py-12 my-12" >
+    <div class="flex flex-row my-8">
+        <div class="md:pl-12 text-center flex flex-col justify-center mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold text-center md:w-5/6 mx-auto mb-4" style="font-family: 'Bebas Neue', cursive;">With economic and personal finance education, we can make economic mobility and security possible for all Californians</h1>
+            <a href="/report" class="leading-loose text-center w-5/6 md:w-3/6 mx-auto font-roboto text-xl"  >
+              To learn more about how we’ve supported California’s teachers and students economic and financial education over the years, <span class="text-cblue hover:text-cblue-light">click here.</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="flex m-md:flex-col flex-row my-12 md:my-24 max-w-screen-xl mx-auto ">
+        <img class="md:hidden rounded-full w-full md:w-128 m-md:mb-8 m-md:w-11/12 m-md:mx-auto" src="{% static 'mission/CEE-Conference-National-Movement.jpeg' %}">
+        <div class="pl-12 pr-10">
+            <h1 class="text-7xl m-md:text-5xl font-bold text-cblue" style="font-family: 'Bebas Neue', cursive;">Nationwide Movement</h1>
+            <a href="https://www.councilforeconed.org/" class="leading-loose font-roboto text-xl"  >
+              We’re also associated with a network of 48 councils throughout the country. Our national affiliate, The Council for Economic Education (CEE), advocates for more and better education in personal finance and economics, primarily through the biennial Survey of the States. Learn more about CEE <span class="text-cblue hover:text-cblue-light">here.</span>
+            </a>
+        </div>
+        <img class="m-md:hidden rounded-full w-full md:w-128 m-md:mt-8 m-md:w-11/12 m-md:mx-auto" src="{% static 'mission/CEE-Conference-National-Movement.jpeg' %}">
+    </div>
+    
+</section>
+
+{% include 'polls/footer.html' %}

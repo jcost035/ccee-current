@@ -1,0 +1,75 @@
+<head>
+    {% load static %}
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9H967QXNHX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9H967QXNHX');
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="{% static 'site.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+
+
+
+
+</head>
+
+<body>
+    {% include 'polls/nav.html' %}
+    <div class="flex flex-col">
+        <div class=" md:w-5/6 flex md:flex-row flex-col mx-auto md:mt-64 md:mb-32">
+            <div class="m-md:mt-32">
+                <div class="absolute bg-cblue-dark rounded-lg w-5/12 h-1/2 -ml-8 mt-12 z-1"></div>
+                <div class="relative md:rounded-lg bg-cblue  md:px-12 py-12 text-center z-10  ">
+                    <h1 class="font-bebas text-white text-6xl md:px-10">You can create intergenerational opportunity</h1>
+                    <h1 class="font-roboto text-white text-2xl mb-6 mx-12 font-thin">When you give to the CCEE, you're brightening the futures of thousands of California's K-12 educators and students</h1>
+
+                    <a href="https://ccee.app.neoncrm.com/forms/donate" target="_blank" class="rounded bg-yellow-500 hover:bg-yellow-700 text-white font-roboto text-3xl py-4 px-10"> Donate Today</a>
+                </div>
+            </div>
+            <div class="md:w-10/12 flex items-center  md:ml-8 rounded-lg m-md:my-10">
+                {% comment %} <img class="rounded-lg shadow-lg " src="{% static 'Donate_Students.jpeg' %}"> {% endcomment %}
+                <video width="" height="" controls>
+                    <source src="{% static 'Sizzle Reel Final(1).mp4' %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video> 
+            </div>
+
+        </div>
+
+        <div class="flex md:flex-row flex-col justify-center md:space-x-10 md:mt-2 items-center">
+            <div class="md:w-2/5 rounded-lg">
+                <img class="w-full rounded-lg" src="{% static 'Donate - Students in Group.jpeg' %}"/>
+                    
+                
+            </div>
+
+            <div class="md:w-2/5 rounded-lg m-md:text-center px-6 py-6">
+                <h1 class="font-bebas text-cblue text-7xl ">Testimonial</h1>
+                <p class="text-xl font-roboto my-2">
+                    “Today, I work at Microsoft as one of forty in my cohort for their Early-Career Finance program.
+
+                    I believe I would not be in this role if it were not for CCEE and my high school teacher Dan Adler. They helped to shape the trajectory of my life for the better.” – Julia Jaynes
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% include 'polls/footer.html' %}
+</body>

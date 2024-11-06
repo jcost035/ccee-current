@@ -1,0 +1,31 @@
+{% load static %}
+<div class="flex flex-col w-11/12 mt-24 md:ml-12">
+    <img class="object-cover rounded-bl-xl m-md:hidden" src="{% static 'index/Econ Ed Banner.png'%}" alt="">
+    <div class="flex m-md:flex-col m-md:space-y-10 flex-row mx-auto md:-mt-36 pl-10">
+      <div class="rounded-xl bg-cblue font-bebas text-white text-6xl md:w-1/3 p-8">
+        October 2022 is economics education month!
+      </div>
+      <div class="m-md:hidden pt-20 w-16  overflow-hidden inline-block">
+        <div class=" h-16  bg-cblue-light rotate-45 transform origin-top-left"></div>
+      </div>
+      <div onclick="window.location.href='/econedmonth'" class="md:w-1/4 md:h-2/3 self-end rounded-lg bg-cgreen hover:bg-cgreen-dark flex flex-col mx-4 px-6 py-4 text-center cursor-pointer">
+        <div class="-mt-10 mb-2 flex flex-row w-4/6 mx-auto space-x-2">
+            <div class="flex h-16 w-16 items-center rounded-full border border-cblue-dark bg-cblue-light">
+              <img class="h-10 mx-auto" src="https://ccee-bucket-compressed.s3.amazonaws.com/static/notepad.png">
+            </div>
+            <div class="flex h-16 w-16 items-center rounded-full border border-cblue-dark bg-cblue-light">
+                <img class="h-12 mx-auto" src="https://ccee-bucket-compressed.s3.amazonaws.com/static/mail.png">    
+            </div>
+            <div class="flex h-16 w-16 items-center rounded-full border border-cblue-dark bg-cblue-light">
+                <img class="h-12 mx-auto p-2" src="https://ccee-bucket-compressed.s3.amazonaws.com/static/Thumb-blue.png">    
+            </div>
+        </div>
+        <span class="font-bebas text-cblue-dark text-4xl">Take action:</span>
+        <p class="text-white text-3xl font-bebas text-center">
+          Click here to discover how you can celebrate Econ Ed Month!
+        </p>
+      </div>
+    
+
+    </div>
+  </div>

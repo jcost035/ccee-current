@@ -1,0 +1,101 @@
+<!--Daily dose section -->
+<div class="hidden my-20 bg-cblue w-full">
+    {% comment %} <div class="absolute h-4/5 border-2  bg-cblue w-170 -ml-72 -z-1"></div> {% endcomment %}
+    <div class="flex flex-col items-center text-center mt-4">
+        <img onclick="window.location.href='/daily-dose'"
+            src="{% static 'daily-white.png' %}"
+            class="m-md:ml-3 h-56 cursor-pointer"
+          />
+        <p class="font-roboto text-white text-2xl md:text-3xl md:mx-96 m-md:mx-2">
+          Support your online instruction through daily, relevant topic exploration. We’ve made it easy for you. Just click and learn!
+        </p>
+    </div>
+    <div class="flex flex-col md:flex-row w-full md:space-x-10 m-md:space-y-12 mt-12 mb-20 mx-auto justify-center">
+
+      <!--first card-->
+      <div class="flex flex-col  md:h-90 self-center items-center w-3/4  md:w-1/4 cursor-pointer">
+        <div class="bg-transparent overflow-hidden  w-full relative h-52 pb-36">
+          <img
+            src="{{first_dose.banner_photo.url}}"
+            class="absolute h-full w-full object-cover object-center rounded-t-lg bg-cblue"
+            alt=""
+          />
+        </div>
+        <div class="z-10 md:h-full w-full">
+          <div class="flex flex-col bg-white rounded-b-lg md:h-full justify-between py-5 px-5">
+            <div class="-mt-10 hidden">
+              <p id="camp-text" class="w-5/6 px-4 text-gray-800 text-2xl p-2 rounded-lg  -ml-10 bg-cgreen ">{{first_dose.topic}}</p>
+            </div>
+            <div class="flex flex-col justify-between">
+              <div class="font-roboto text-2xl text-cgreen">{{first_dose.topic}}</div>
+              <div class=" text-gray-600 font-roboto">{{first_dose.key_question}}</div>
+              <div class="text-2xl text-red-600 font-bold"></div>
+            </div>
+            <button onclick="window.location.href='/daily-dose/{{first_dose.topic}}'" type="button" id="button" class="md:w-1/3 mt-2 justify-self-end rounded-lg font-semibold btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border-cblue border-2 bg-cblue hover:bg-cblue-dark hover:text-white  text-white font-normal py-1 text-center">
+              Read More
+            </button> 
+          </div>
+        </div>
+      </div>
+      <!--second card-->
+      <div class="flex flex-col  md:h-90 self-center items-center w-3/4  md:w-1/4 cursor-pointer">
+        <div class="bg-transparent overflow-hidden  w-full relative h-52 pb-36">
+          <img
+            src="{{second_dose.banner_photo.url}}"
+            class="absolute h-full w-full object-cover object-center rounded-t-lg bg-cblue"
+            alt=""
+          />
+        </div>
+        <div class="z-10 md:h-full w-full">
+          <div class="flex flex-col bg-white md:h-full rounded-b-lg justify-between  py-5 px-5">
+            <div class="-mt-10 hidden">
+              <p id="camp-text" class="w-5/6 px-4 text-gray-800 text-2xl p-2 rounded-lg -ml-10 bg-cgreen">{{second_dose.topic}}</p>
+            </div>
+            <div class="flex flex-col justify-between">
+              <div class="font-roboto text-2xl text-cgreen">{{second_dose.topic}}</div>
+              <div class=" text-gray-600 font-roboto">{{second_dose.key_question}}</div>
+              <div class="text-2xl text-red-600 font-bold"></div>
+            </div>
+            <button onclick="window.location.href='/daily-dose/{{second_dose.topic}}'" type="button" id="button" class="md:w-1/3 mt-2 justify-self-end rounded-lg font-semibold btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border-cblue border-2 bg-cblue hover:bg-cblue-dark hover:text-white  text-white font-normal py-1 text-center">
+              Read More
+            </button> 
+          </div>
+        </div>
+      </div>
+      <!--third card-->
+      <div class="flex flex-col  md:h-90 self-center items-center w-3/4  md:w-1/4 cursor-pointer">
+        <div class="bg-transparent overflow-hidden  w-full relative h-52 pb-36" >
+          <img
+            src="{{third_dose.banner_photo.url}}"
+            class="absolute h-full w-full object-cover object-center rounded-t-lg bg-cblue"
+            alt=""
+          />
+        </div>
+        <div class="z-10 md:h-full w-full">
+          <div class="flex flex-col bg-white rounded-b-lg md:h-full justify-between py-5 px-5">
+            <div class="hidden -mt-10">
+              <p id="camp-text" class="w-5/6 px-4 text-gray-800 text-2xl p-2 rounded-lg -ml-10 bg-cgreen">{{third_dose.topic}}</p>
+            </div>
+            <div class="flex flex-col justify-between">
+              <div class="font-roboto text-2xl text-cgreen">{{third_dose.topic}}</div>
+              <div class=" text-gray-600 font-roboto">{{third_dose.key_question}}</div>
+              <div class="text-2xl text-red-600 font-bold"></div>
+            </div>
+            <button onclick="window.location.href='/daily-dose/{{third_dose.topic}}'" type="button" id="button" class="md:w-1/3 mt-2 justify-self-end rounded-lg font-semibold btn-outline-primary transition duration-300 ease-in-out focus:outline-none focus:shadow-outline border-cblue border-2 bg-cblue hover:bg-cblue-dark hover:text-white  text-white font-normal py-1 text-center">
+              Read More
+            </button> 
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="flex flex-col justify-end m-md:mr-4 md:px-16 pb-4 ">
+    <a href="/daily-dose" class="flex flex-row justify-end align-center cursor-pointer font-roboto text-3xl text-white text-right justify-self-end ">
+      <span class="md:px-16 pb-4">More DDOE topics <i class="fas -mt-4 py-4 self-center align-center text-3xl text-yellow-500 fa-arrow-right"></i></span>
+    </a>
+  </div>
+  </div> 
+
+  
+
+  </div>
+  <!-- end daily dose section -->

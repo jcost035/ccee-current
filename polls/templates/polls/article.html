@@ -1,0 +1,239 @@
+<head>
+    {% load static %}
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9H967QXNHX"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9H967QXNHX');
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:image" itemprop="image" content="https://ccee-bucket.s3.amazonaws.com/static/CCEE-Logo-Final-5-2019-e1563236007990.png">
+
+    <link href="{% static 'site.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.0.385/build/pdf.min.js"></script>
+
+    <script>
+        
+    </script>
+</head>
+
+<body>
+    {% include 'polls/nav.html'%}
+    <div class="hidden absolute bg-cblue w-full h-2/3 -mt-16"></div>
+    <div class="relative  mx-auto z-10" x-data="programData()" x-init="observe()">
+        {% if hide_banner != True %}
+            <div class="mb-24 bg-cblue" style="background-image: url('{{news.banner_photo.url}}');
+                background-repeat: no-repeat;
+                background-size: cover;">
+                <div class="relative md:mt-32 text-white text-3xl font-bebas pt-32 w-9/12 m-md:w-11/12 mx-auto"><span class="bg-cgreen px-2">{{news.date}}</span></div>
+                <div class="relative font-bebas m-md:text-5xl text-7xl text-white w-9/12 m-md:w-11/12 mx-auto">{{news.title}} </div>
+                <p class="text-white text-xl mx-auto pt-6 pb-16 font-roboto font-thin w-9/12 m-md:w-11/12" >{{news.description}}</p>
+            </div>
+        {% endif %}
+        
+        {% if pdf.name != '' %}
+            <div class="w-full mx-auto mt-32">
+                <div id="holder" class="w-2/3 mx-auto flex flex-col space-y-6"></div>
+            </div>
+        {% endif %}
+       
+
+        
+        <div id="how_works"></div>
+        <!--optional html content start-->
+        <div id="html_content" class="w-9/12 m-md:w-11/12 m-md:mx-4 mx-auto">
+            {{news.content|safe}}
+
+            <div id="content" class=" observerTrigger"></div>
+        </div>
+        <!--optional html content end-->
+
+   
+
+        <div class="mx-auto w-9/12 m-md:w-11/12 bg-cblue rounded-lg mt-16">
+            <h1 class="text-6xl font-bebas text-white text-center py-6">More Articles</h1>
+            <div class="flex flex-col md:flex-row z-10 relative mx-8 md:space-x-6">
+                
+                
+                
+                <div {% if third_article.external %} @click="window.location.href='{{first_article.external_url}}'" {% else %} @click="window.location.href='{{first_article.title}}'" {% endif %} class="cursor-pointer rounded w-full lg:w-1/3 p-4 lg:p-0">
+                    <img  src="{{first_article.thumb_photo.url}}" class="relative object-contain rounded -z-1 h-64" alt="technology" />
+                    <div  class="relative p-4 pl-0 z-20">
+                        
+                        <h2 class="-ml-4 -mr-4 md:-ml-6 md:mr-4 z-20 text-xl text-gray-800 p-2 -mt-24 bg-cgreen rounded font-bebas overflow-clip">
+                            <span class="leading-loose text-white p-2 px-4 ">
+                                {{first_article.title}}
+                            <span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div {% if third_article.external %} @click="window.location.href='{{second_article.external_url}}'" {% else %} @click="window.location.href='{{second_article.title}}'" {% endif %} class="cursor-pointer rounded w-full lg:w-1/3 p-4 lg:p-0">
+                    <img  src="{{second_article.thumb_photo.url}}" class="relative object-contain rounded -z-1 h-64" alt="technology" />
+                    <div  class="relative p-4 pl-0 z-20">
+                        
+                        <h2 class="-ml-4 -mr-4 md:-ml-6 md:mr-4 bg-cgreen  z-20 text-xl text-gray-800  p-2  -mt-24    font-bebas overflow-clip">
+                            <span class="leading-loose text-white bg-cgreen p-2 px-4 ">
+                                {{second_article.title}}
+                            <span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div {% if third_article.external %} @click="window.location.href='{{third_article.external_url}}'" {% else %} @click="window.location.href='{{third_article.title}}'" {% endif %} class="cursor-pointer rounded w-full lg:w-1/3 p-4 lg:p-0">
+                    <img  src="{{third_article.thumb_photo.url}}" class="relative object-contain rounded -z-1 h-64" alt="technology" />
+                    <div  class="relative p-4 pl-0 z-20">
+                        
+                        <h2 class="-ml-4 -mr-4 md:-ml-6 md:mr-4 bg-cgreen  z-20 text-xl text-gray-800  p-2  -mt-24    font-bebas overflow-clip">
+                            <span class="leading-loose text-white bg-cgreen p-2 px-4 ">
+                                {{third_article.title}}
+                            <span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+            <div id="supporters" class=" observerTrigger"></div>
+        </div>
+
+        
+        <div class="font-roboto m-md:text-lg md:text-3xl text-center mx-auto mt-16 w-9/12 m-md:w-11/12">
+            These supporters have made it possible for California's teachers and students to create opportunity for generations through programs like this
+        </div>
+
+        <div id="action" class=" observerTrigger"></div>
+        <div class="md:ml-48 flex flex-col md:flex-row justify-center m-md:space-y-2 md:space-x-2 text-xl my-12 w-9/12 m-md:w-11/12">
+            <a href="/donate" class="px-8 py-4 border-8 border-cblue bg-cblue rounded-lg text-white text-center font-roboto">Support the CCEE today!</a>
+            <a href="/volunteer" class="px-8 py-4 border-8 border-cgreen rounded-lg text-cgreen text-center font-roboto">Get involved with CCEE</a>
+        </div>
+
+        <div class="hidden mx-auto bg-blue px-6 py-4 bg-cblue mt-16 flex flex-col items-center w-9/12 m-md:w-11/12">
+            <h1 class="text-white text-4xl font-bebas mt-8">Stay updated on all things CCEE</h1>
+            <input class="md:w-2/3 w-full m-8 p-2 font-roboto text-xl" placeholder="example@gmail.com"></input>
+        </div>
+
+        <!-- Begin Constant Contact Inline Form Code -->
+        <div class="md:w-2/3 mx-auto bg-cblue rounded-lg flex flex-col m-md:py-12  md:flex-row ">
+            <div class="self-center px-16">
+            <i class="fas fa-envelope-open-text fa-7x text-cgreen"></i>
+            </div>
+            <div class="">
+            <h3 id="header" class="text-5xl text-white m-md:text-center pt-6 md:-mb-4 font-bebas">Stay up to date on all things CCEE</h3>
+            <div class="ctct-inline-form md:w-2/3 self-center " data-form-id="018d6a3e-dfdc-4bee-aa5c-6f05cca61020"></div>
+            </div>
+        </div>
+        <!-- End Constant Contact Inline Form Code -->
+
+        
+
+    </div>
+    {% include "polls/footer.html"%}
+</body>
+
+        <!-- Begin Constant Contact Active Forms -->
+        <script> var _ctct_m = "7c85ca4a273adbb5078e387bee3b7a09"; </script>
+        <script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
+        <!-- End Constant Contact Active Forms -->
+
+<script>
+    
+    function renderPDF(url, canvasContainer, options) {
+    
+        options = options || {
+            scale: 1.75
+        };
+
+        function renderPage(page) {
+            var viewport = page.getViewport(options.scale);
+            var wrapper = document.createElement("div");
+            wrapper.className = " w-full mx-auto";
+            var canvas = document.createElement('canvas');
+            canvas.className = "w-full";
+            var ctx = canvas.getContext('2d');
+            var renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+            };
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            wrapper.appendChild(canvas)
+            canvasContainer.appendChild(wrapper);
+
+            page.render(renderContext);
+        }
+
+        function renderPages(pdfDoc) {
+            for (var num = 0; num <= pdfDoc.numPages; num++)
+                pdfDoc.getPage(num).then(renderPage);
+        }
+
+        PDFJS.disableWorker = true;
+        PDFJS.getDocument(url).then(renderPages);
+    }
+
+
+    renderPDF('https://ccee-bucket-compressed.s3.amazonaws.com/media/programs/CEE-Partner-Press-Release.docx_7pmkPNC.pdf', document.getElementById('holder'));
+
+
+    function programData() {
+
+        // var faqHighlight = false;
+        // var observer = new IntersectionObserver(function(entries) {
+        //     // isIntersecting is true when element and viewport are overlapping
+        //     // isIntersecting is false when element and viewport don't overlap
+        //     if(entries[0].isIntersecting === true)
+        //     {
+        //         this.faqHighlight = true;
+        //         console.log('Element has just become visible in screen');
+        //     }
+                
+        // }, { threshold: [0] });
+
+        // observer.observe(document.querySelector("#faq"));
+        return {
+            highlighted: {},
+            observe() {
+                var observer = new IntersectionObserver(entries => {
+                    // isIntersecting is true when element and viewport are overlapping
+                    // isIntersecting is false when element and viewport don't overlap
+                    if(entries[0].isIntersecting === true)
+                    {
+                        this.highlighted[entries[0].target.id + '-marker'] = true;
+                    }
+                    else {
+                        this.highlighted[entries[0].target.id + '-marker'] = false;
+                    }                                   
+                }, { threshold: [0] });
+
+                document.querySelectorAll(".observerTrigger").forEach((element) => observer.observe(element))                
+            },
+            firstQOpen: false,
+            secondQOpen: false,
+            thirdQOpen: false,
+            scrollTo(position)
+            {
+                var elmnt = document.getElementById(position);
+                elmnt.scrollIntoView(); 
+            }
+
+
+        }
+    }
+
+</script>

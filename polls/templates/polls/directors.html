@@ -1,0 +1,158 @@
+{% load static %}
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9H967QXNHX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9H967QXNHX');
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link href="{% static "site.css" %}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/ defer>
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com" defer>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet" defer> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" defer>
+
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+<script>
+  
+  function data() {
+    return {
+      open: false,
+      ourteamOpen : false,
+      centersOpen : false,
+      bodOpen : false,
+      dapOpen : false,
+      arOpen : false,
+      atTop : true,
+      popupOpen : false,
+      whatwedoOpen : false,
+      menuClear(openMenu) {
+        if(openMenu == 'ourteamOpen')
+        {
+          this.ourteamOpen = true
+        }
+        else
+        {
+          this.ourteamOpen = false
+        }
+
+        if(openMenu == 'centersOpen')
+        {
+          this.centersOpen = true
+        }
+        else
+        {
+          this.centersOpen = false
+        }
+
+        if(openMenu == 'bodOpen')
+        {
+          this.bodOpen = true
+        }
+        else
+        {
+          this.bodOpen = false
+        }
+
+        if(openMenu == 'dapOpen')
+        {
+          this.dapOpen = true
+        }
+        else
+        {
+          this.dapOpen = false
+        }
+
+        if(openMenu == 'arOpen')
+        {
+          this.arOpen = true
+        }
+        else
+        {
+          this.arOpen = false
+        }
+        
+      },
+      
+      clearsubmenus()
+      {
+        this.ourteamOpen = false
+        this.centersOpen = false
+        this.bodOpen = false
+        this.dapOpen = false
+        this.arOpen = false
+      }
+    }
+  }
+</script>
+
+<script>
+  function popupData() {
+      return {
+        popupOpen : false
+      }
+  }
+</script>
+
+<script>
+  function panelData() {
+      return {
+        firstpanelOpen : true,
+        secondpanelOpen : false,
+        thirdpanelOpen : false,
+        secondpanelText : false,
+        thirdpanelText : false,
+      }
+  }
+</script>
+
+{% include "polls/nav.html"%}
+
+
+<div class="mx-auto flex flex-col max-w-screen-xl">
+  <!--Banner Menu-->
+  {% comment %} <div class="mx-auto flex flex-col max-w-screen-xl">
+    <div class="flex flex-col md:flex-row mt-40 ">
+
+      {% include 'polls/banner-nav.html'%}
+
+    <div class="md:w-1/2 m-md:text-center m-md:mt-12">
+        <h1 class="md:ml-16 m-md:p-4 text-9xl mt-12 text-gradient bg-cblue" style="font-family: 'Bebas Neue', cursive;">Our Team</h1>
+
+        <p class="mx-4 md:mx-16 text-lg md:-mr-2" style="font-family: 'Roboto', sans-serif;">{{banner.description}}</p>
+    </div>
+  </div> {% endcomment %}
+
+  <h1 class="text-7xl mx-auto text-cblue mt-32" style="font-family: 'Bebas Neue', cursive;">Board of Directors</h1>
+  <div class="mx-6 m-md:text-center md:mx-24">
+
+    <div class="grid grid-cols-1 md:grid-cols-4">
+      {% for director in director_list %}
+        <div class="p-4">
+          <h1 class="font-roboto text-2xl text-cblue">{{director.name}}</h1>
+          <h1 class="font-roboto text-lg font-light italic text-cblue-light">{{director.position}}</h1>
+          <h1 class="font-roboto text-lg font-light text-cgra-900">{{director.bio}}</h1>
+          <h1 class="font-roboto text-lg font-light text-gray-700">{{director.address}}</h1>
+          <h1 class="font-roboto text-lg font-light text-gray-700">{{director.phone}}</h1>
+          <h1 class="font-roboto text-lg font-light text-cblue hover:cblue-light">{{director.email}}</h1>
+        </div>
+      {% endfor %}
+    </div>
+    
+
+    
+  </div>
+
+  
+</div>
+{% include 'polls/footer.html'%}
